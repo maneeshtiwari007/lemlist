@@ -1,0 +1,61 @@
+﻿page_type,url,options.query,options.result_url,options.landing_min_time,options.landing_click,country
+GoogleSearchResult,https://www.google.com/,"Cloud Exact keyword One",cas.com.bd,107,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Exact keyword Four",cas.com.bd,132,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Exact keyword One",cas.com.bd,43,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Exact keyword Four",cas.com.bd,32,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Exact keyword Two",cas.com.bd,71,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Exact keyword One",cas.com.bd,90,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Exact keyword Four",cas.com.bd,64,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Exact keyword One",cas.com.bd,91,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Brand keyword Cas Two Cloud Exact keyword Four",cas.com.bd,98,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Brand keyword Cas Three Cloud Exact keyword Three",cas.com.bd,92,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Brand keyword Cas One Cloud Exact keyword Four",cas.com.bd,64,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Brand keyword Cas Three Cloud Exact keyword Four",cas.com.bd,84,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Brand keyword Cas Two Cloud Exact keyword Three",cas.com.bd,138,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Brand keyword Cas Three Cloud Exact keyword Two",cas.com.bd,57,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Brand keyword Cas Three Cloud Exact keyword Two",cas.com.bd,44,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Brand keyword Cas Two Cloud Exact keyword Three",cas.com.bd,19,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Secondary keyword Cas Two Cloud Exact keyword Four",cas.com.bd,111,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Secondary keyword Cas Three Cloud Exact keyword Four",cas.com.bd,59,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Secondary keyword Cas One Cloud Exact keyword Four",cas.com.bd,69,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Secondary keyword Cas Two Cloud Exact keyword Four",cas.com.bd,93,Yes,IN
+GoogleSearchResult,https://www.google.com/,"cloud Secondary keyword Cas One Cloud Exact keyword One",cas.com.bd,125,No,IN
+GoogleSearchResult,https://www.google.com/,"cloud Secondary keyword Cas Three Cloud Exact keyword Three",cas.com.bd,46,No,IN
+GoogleSearchResult,https://www.google.com/,"cloud Secondary keyword Cas Two Cloud Exact keyword One",cas.com.bd,133,No,IN
+GoogleSearchResult,https://www.google.com/,"cloud Secondary keyword Cas Two Cloud Exact keyword Two",cas.com.bd,78,No,IN
+GoogleSearchResult,https://www.google.com/,"cloud Partial keyword One Cloud Secondary keyword Cas Three",cas.com.bd,104,No,IN
+GoogleSearchResult,https://www.google.com/,"cloud Partial keyword Two Cloud Secondary keyword Cas One",cas.com.bd,59,No,IN
+GoogleSearchResult,https://www.google.com/,"cloud Partial keyword One Cloud Secondary keyword Cas One",cas.com.bd,19,No,IN
+GoogleSearchResult,https://www.google.com/,"cloud Partial keyword Two Cloud Secondary keyword Cas Two",cas.com.bd,100,No,IN
+GoogleSearchResult,https://www.google.com/,"cloud Partial keyword Two Cloud Secondary keyword Cas One",cas.com.bd,32,No,IN
+GoogleSearchResult,https://www.google.com/,"cloud Partial keyword Two Cloud Secondary keyword Cas Three",cas.com.bd,67,No,IN
+GoogleSearchResult,https://www.google.com/,"cloud Partial keyword Two Cloud Secondary keyword Cas Three",cas.com.bd,17,No,
+GoogleSearchResult,https://www.google.com/,"cloud Partial keyword Two Cloud Secondary keyword Cas One",cas.com.bd,75,No,
+GoogleSearchResult,https://www.google.com/,"cloud Partial keyword One Cloud Brand keyword Cas Two",cas.com.bd,21,No,
+GoogleSearchResult,https://www.google.com/,"cloud Partial keyword Three Cloud Brand keyword Cas One",cas.com.bd,72,No,
+GoogleSearchResult,https://www.google.com/,"cloud Partial keyword One Cloud Brand keyword Cas Three",cas.com.bd,45,No,
+GoogleSearchResult,https://www.google.com/,"cloud Partial keyword Four Cloud Brand keyword Cas One",cas.com.bd,90,No,
+GoogleSearchResult,https://www.google.com/,,cas.com.bd,12,No,
+GoogleSearchResult,https://www.google.com/,,cas.com.bd,82,No,
+GoogleSearchResult,https://www.google.com/,,cas.com.bd,45,No,
+GoogleSearchResult,https://www.google.com/,,cas.com.bd,72,No,
+GoogleSearchResult,https://www.google.com/,"cloud Exact keyword Three",pluckit.co.in,31,No,
+GoogleSearchResult,https://www.google.com/,"cloud Exact keyword Three",pluckit.co.in,30,No,
+GoogleSearchResult,https://www.google.com/,"cloud Brand keyword Pluckit One Cloud Exact keyword Two",pluckit.co.in,140,No,
+GoogleSearchResult,https://www.google.com/,"cloud Brand keyword Pluckit Three Cloud Exact keyword Three",pluckit.co.in,33,No,
+GoogleSearchResult,https://www.google.com/,"cloud Secondary keyword Pluckit Three Cloud Exact keyword Three",pluckit.co.in,42,No,
+GoogleSearchResult,https://www.google.com/,"cloud Secondary keyword Pluckit Three Cloud Exact keyword Three",pluckit.co.in,139,No,
+GoogleSearchResult,https://www.google.com/,"cloud Partial keyword Two Cloud Secondary keyword Pluckit Two",pluckit.co.in,76,No,
+GoogleSearchResult,https://www.google.com/,"cloud Partial keyword Four Cloud Secondary keyword Pluckit One",pluckit.co.in,121,No,
+GoogleSearchResult,https://www.google.com/,"cloud Partial keyword Three Cloud Brand keyword Pluckit Three",pluckit.co.in,14,No,
+GoogleSearchResult,https://www.google.com/,"cloud Partial keyword Three Cloud Brand keyword Pluckit Three",pluckit.co.in,76,No,
+GoogleSearchResult,https://www.google.com/,"cloud Partial keyword Three Cloud Brand keyword Pluckit Two",pluckit.co.in,82,No,
+GoogleSearchResult,https://www.google.com/,"cloud Partial keyword Two Cloud Brand keyword Pluckit One",pluckit.co.in,40,No,
+GoogleSearchResult,https://www.google.com/,"cloud Partial keyword Four Cloud Brand keyword Pluckit One",pluckit.co.in,75,No,
+GoogleSearchResult,https://www.google.com/,"cloud Partial keyword Two Cloud Brand keyword Pluckit One",pluckit.co.in,87,No,
+GoogleSearchResult,https://www.google.com/,"cloud Partial keyword Three Cloud Brand keyword Pluckit Two",pluckit.co.in,80,No,
+GoogleSearchResult,https://www.google.com/,"cloud Partial keyword Two Cloud Brand keyword Pluckit One",pluckit.co.in,114,No,
+GoogleSearchResult,https://www.google.com/,"cloud Partial keyword One Cloud Brand keyword Pluckit One",pluckit.co.in,17,No,
+GoogleSearchResult,https://www.google.com/,"cloud Partial keyword Four Cloud Brand keyword Pluckit One",pluckit.co.in,54,No,
+GoogleSearchResult,https://www.google.com/,"cloud Partial keyword Three Cloud Brand keyword Pluckit One",pluckit.co.in,35,No,
+GoogleSearchResult,https://www.google.com/,"cloud Partial keyword Three Cloud Brand keyword Pluckit Three",pluckit.co.in,73,No,

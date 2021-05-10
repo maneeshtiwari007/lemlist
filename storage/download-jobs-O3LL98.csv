@@ -1,0 +1,13 @@
+﻿page_type,url,options.result_url,options.resultQury,job_title,weight,options.landing_min_time,options.landing_click
+GoogleSearchResult,https://www.google.com/,cas.com.bd,"Lorem Ipsum is simply dummy text of the printing and typesetting industry","Software Developer",12,43,Yes
+GoogleSearchResult,https://www.google.com/,cas.com.bd,"Lorem Ipsum is simply dummy text of the printing and typesetting industry","Software Developer",12,46,No
+GoogleSearchResult,https://www.google.com/,cas.com.bd,"Test Brand Lorem Ipsum is simply dummy text of the printing and typesetting industry","Software Developer",12,91,No
+GoogleSearchResult,https://www.google.com/,cas.com.bd,"Test Secondary Lorem Ipsum is simply dummy text of the printing and typesetting industry","Software Developer",12,15,No
+GoogleSearchResult,https://www.google.com/,cas.com.bd,"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry","Software Developer",12,30,No
+GoogleSearchResult,https://www.google.com/,cas.com.bd,"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Test Brand","Software Developer",12,65,No
+GoogleSearchResult,https://www.google.com/,cas.com.bd,,"Software Developer",12,64,No
+GoogleSearchResult,https://www.google.com/,cas.com.bd,,"Software Developer",12,103,No
+GoogleSearchResult,https://www.google.com/,cas.com.bd,,"Software Developer",12,110,No
+GoogleSearchResult,https://www.google.com/,cas.com.bd,,"Software Developer",12,106,No
+GoogleSearchResult,https://www.google.com/,cas.com.bd,,"Software Developer",12,80,No
+GoogleSearchResult,https://www.google.com/,cas.com.bd,,"Software Developer",12,95,No

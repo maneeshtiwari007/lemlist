@@ -1,0 +1,46 @@
+﻿page_type,url,options.result_url,options.resultQury,job_title,weight,options.landing_min_time,options.landing_click
+GoogleSearchResult,https://www.google.com/,cas.com.bd,"Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,20,24,Yes
+GoogleSearchResult,https://www.google.com/,cas.com.bd,"Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,20,34,Yes
+GoogleSearchResult,https://www.google.com/,cas.com.bd,"Test Brand Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,20,44,No
+GoogleSearchResult,https://www.google.com/,cas.com.bd,"Test Brand Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,20,76,No
+GoogleSearchResult,https://www.google.com/,cas.com.bd,"Test Brand Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,20,40,No
+GoogleSearchResult,https://www.google.com/,cas.com.bd,"Test Brand Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,20,87,No
+GoogleSearchResult,https://www.google.com/,cas.com.bd,"Test Brand Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,20,77,No
+GoogleSearchResult,https://www.google.com/,cas.com.bd,"Test Secondary Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,20,56,No
+GoogleSearchResult,https://www.google.com/,cas.com.bd,"Test Secondary Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,20,19,No
+GoogleSearchResult,https://www.google.com/,cas.com.bd,"Test Secondary Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,20,22,No
+GoogleSearchResult,https://www.google.com/,cas.com.bd,"Test Secondary Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,20,53,No
+GoogleSearchResult,https://www.google.com/,cas.com.bd,"Test Secondary Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,20,84,No
+GoogleSearchResult,https://www.google.com/,cas.com.bd,"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,20,57,No
+GoogleSearchResult,https://www.google.com/,cas.com.bd,"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,20,53,No
+GoogleSearchResult,https://www.google.com/,cas.com.bd,"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Test Brand",Test,20,72,No
+GoogleSearchResult,https://www.google.com/,cas.com.bd,"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Test Brand",Test,20,100,No
+GoogleSearchResult,https://www.google.com/,cas.com.bd,"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Test Brand",Test,20,98,No
+GoogleSearchResult,https://www.google.com/,cas.com.bd,"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Test Brand",Test,20,80,No
+GoogleSearchResult,https://www.google.com/,cas.com.bd,"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Test Brand",Test,20,29,No
+GoogleSearchResult,https://www.google.com/,cas.com.bd,"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Test Brand",Test,20,95,No
+GoogleSearchResult,https://www.google.com/,allinone.com,"Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,25,32,Yes
+GoogleSearchResult,https://www.google.com/,allinone.com,"Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,25,23,Yes
+GoogleSearchResult,https://www.google.com/,allinone.com,"Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,25,39,Yes
+GoogleSearchResult,https://www.google.com/,allinone.com,"Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,25,27,No
+GoogleSearchResult,https://www.google.com/,allinone.com,"Test Brand Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,25,42,No
+GoogleSearchResult,https://www.google.com/,allinone.com,"Test Brand Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,25,12,No
+GoogleSearchResult,https://www.google.com/,allinone.com,"Test Brand Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,25,21,No
+GoogleSearchResult,https://www.google.com/,allinone.com,"Test Secondary Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,25,35,No
+GoogleSearchResult,https://www.google.com/,allinone.com,"Test Secondary Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,25,30,No
+GoogleSearchResult,https://www.google.com/,allinone.com,"Test Secondary Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,25,32,No
+GoogleSearchResult,https://www.google.com/,allinone.com,"Test Secondary Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,25,13,No
+GoogleSearchResult,https://www.google.com/,allinone.com,"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,25,37,No
+GoogleSearchResult,https://www.google.com/,allinone.com,"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,25,42,No
+GoogleSearchResult,https://www.google.com/,allinone.com,"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,25,42,No
+GoogleSearchResult,https://www.google.com/,allinone.com,"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry",Test,25,36,No
+GoogleSearchResult,https://www.google.com/,allinone.com,"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Test Brand",Test,25,19,No
+GoogleSearchResult,https://www.google.com/,allinone.com,"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Test Brand",Test,25,42,No
+GoogleSearchResult,https://www.google.com/,allinone.com,"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Test Brand",Test,25,31,No
+GoogleSearchResult,https://www.google.com/,allinone.com,"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Test Brand",Test,25,23,No
+GoogleSearchResult,https://www.google.com/,allinone.com,,Test,25,20,No
+GoogleSearchResult,https://www.google.com/,allinone.com,,Test,25,24,No
+GoogleSearchResult,https://www.google.com/,allinone.com,,Test,25,48,No
+GoogleSearchResult,https://www.google.com/,allinone.com,,Test,25,20,No
+GoogleSearchResult,https://www.google.com/,allinone.com,,Test,25,21,No
+GoogleSearchResult,https://www.google.com/,allinone.com,,Test,25,13,No

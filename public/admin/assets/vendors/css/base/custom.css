@@ -1,0 +1,199 @@
+.stats-row{
+   display: flex;
+   align-items: center;
+   border-bottom: 1px solid #dee2e6;
+   margin-bottom: 1rem;
+   padding-bottom: 1rem;
+}
+
+.stats-content, .stats-icon{
+   width: 50%;
+   padding-left: 1rem;
+   padding-right: 1rem;
+}
+.stats-content-job.stats-icon{
+	 width: 100%;
+   padding-left: 1rem;
+   padding-right: 1rem;
+}
+.stats-icon{
+	text-align: right;
+}
+
+.stats-icon .la{
+  width: 35px;
+  height: 35px;
+  background: #2c304d;
+  border-radius: 50%;
+  line-height: 35px;
+  color: #fff;
+  text-align: center;
+}
+
+.card .actions .btn{
+  border-radius: .25rem;
+}
+.display_exactkeyword .form-group {
+    position: relative;
+    counter-increment: awesome-counter;
+}
+.display_exactkeyword label:before {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0.75rem 0 0;
+    border-radius: 50%;
+    border: 2px solid #2e58a6;
+    width: 30px;
+    height: 30px;
+    line-height: 1.2;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1rem;
+    position: relative;
+    top: -2px;
+    content: counter(awesome-counter);
+}
+.display_exactkeyword .form-group {
+    position: relative;
+    counter-increment: awesome-counter;
+}
+.display_exactkeyword label:before {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0.75rem 0 0;
+    border-radius: 50%;
+    border: 2px solid #2e58a6;
+    width: 40px;
+    height: 40px;
+    line-height: 1.5;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+    position: relative;
+    top: -2px;
+    content: counter(awesome-counter);
+}
+.display .form-group {
+    position: relative;
+    counter-increment: awesome-counter;
+}
+.display label:before {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0.75rem 0 0;
+    border-radius: 50%;
+    border: 2px solid #2e58a6;
+    width: 40px;
+    height: 40px;
+    line-height: 1.5;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+    position: relative;
+    top: -2px;
+    content: counter(awesome-counter);
+}
+.display_partialkeyword .form-group {
+    position: relative;
+    counter-increment: awesome-counter;
+}
+.display_partialkeyword label:before {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0.75rem 0 0;
+    border-radius: 50%;
+    border: 2px solid #2e58a6;
+    width: 40px;
+    height: 40px;
+    line-height: 1.5;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+    position: relative;
+    top: -2px;
+    content: counter(awesome-counter);
+}
+.display_brandkeyword .form-group {
+    position: relative;
+    counter-increment: awesome-counter;
+}
+.display_brandkeyword label:before {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0.75rem 0 0;
+    border-radius: 50%;
+    border: 2px solid #2e58a6;
+    width: 40px;
+    height: 40px;
+    line-height: 1.5;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+    position: relative;
+    top: -2px;
+    content: counter(awesome-counter);
+}
+.display_secondarykeyword .form-group {
+    position: relative;
+    counter-increment: awesome-counter;
+}
+.display_secondarykeyword label:before {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0.75rem 0 0;
+    border-radius: 50%;
+    border: 2px solid #2e58a6;
+    width: 40px;
+    height: 40px;
+    line-height: 1.5;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+    position: relative;
+    top: -2px;
+    content: counter(awesome-counter);
+}
+.display-checkbox-data{
+	display:none;
+}
+.display-country .form-group {
+    position: relative;
+    counter-increment: awesome-counter;
+}
+.display-country label:before {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0.75rem 0 0;
+    border-radius: 50%;
+    border: 2px solid #2e58a6;
+    width: 40px;
+    height: 40px;
+    line-height: 1.5;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+    position: relative;
+    top: -2px;
+    content: counter(awesome-counter);
+}
+.show_project .show_project_url {
+    position: relative;
+    counter-increment: awesome-counter;
+}
+.show_project label:before {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0.75rem 0 0;
+    border-radius: 50%;
+    border: 2px solid #2e58a6;
+    width: 40px;
+    height: 40px;
+    line-height: 1.5;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+    position: relative;
+    top: -2px;
+    content: counter(awesome-counter);
+}
+

@@ -1,0 +1,101 @@
+﻿page_type,url,options.query,options.result_url,options.landing_min_time,options.landing_click,country
+GoogleSearchResult,https://www.google.com/,"Cloud Exact KeyWord First",Codeyiizen.com,48,Yes,CK
+GoogleSearchResult,https://www.google.com/,"Cloud Exact KeyWord Second",Codeyiizen.com,35,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Exact KeyWord Second",Codeyiizen.com,64,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Exact KeyWord Third",Codeyiizen.com,47,Yes,CK
+GoogleSearchResult,https://www.google.com/,"Cloud Exact KeyWord First",Codeyiizen.com,93,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Exact KeyWord First",Codeyiizen.com,52,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Exact KeyWord Third",Codeyiizen.com,72,Yes,Us
+GoogleSearchResult,https://www.google.com/,"Cloud Exact KeyWord First",Codeyiizen.com,64,Yes,Us
+GoogleSearchResult,https://www.google.com/,"Cloud Exact KeyWord First",Codeyiizen.com,22,Yes,CK
+GoogleSearchResult,https://www.google.com/,"Cloud Exact KeyWord First",Codeyiizen.com,93,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Test Brand Cloud Exact KeyWord Third",Codeyiizen.com,47,Yes,CK
+GoogleSearchResult,https://www.google.com/,"Test Brand Cloud Exact KeyWord Third",Codeyiizen.com,93,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Test Brand Cloud Exact KeyWord First",Codeyiizen.com,95,Yes,CK
+GoogleSearchResult,https://www.google.com/,"Test Brand Cloud Exact KeyWord First",Codeyiizen.com,38,Yes,Us
+GoogleSearchResult,https://www.google.com/,"Test Brand Cloud Exact KeyWord Third",Codeyiizen.com,86,Yes,Us
+GoogleSearchResult,https://www.google.com/,"Test Brand Cloud Exact KeyWord Second",Codeyiizen.com,52,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Test Brand Cloud Exact KeyWord First",Codeyiizen.com,78,Yes,Us
+GoogleSearchResult,https://www.google.com/,"Test Brand Cloud Exact KeyWord Second",Codeyiizen.com,50,Yes,Us
+GoogleSearchResult,https://www.google.com/,"Test Brand Cloud Exact KeyWord First",Codeyiizen.com,27,Yes,CK
+GoogleSearchResult,https://www.google.com/,"Test Brand Cloud Exact KeyWord First",Codeyiizen.com,54,Yes,CK
+GoogleSearchResult,https://www.google.com/,"Test Secondary Cloud Exact KeyWord Third",Codeyiizen.com,52,No,CK
+GoogleSearchResult,https://www.google.com/,"Test Secondary Cloud Exact KeyWord Third",Codeyiizen.com,93,No,CK
+GoogleSearchResult,https://www.google.com/,"Test Secondary Cloud Exact KeyWord Second",Codeyiizen.com,51,No,Us
+GoogleSearchResult,https://www.google.com/,"Test Secondary Cloud Exact KeyWord Third",Codeyiizen.com,86,No,IN
+GoogleSearchResult,https://www.google.com/,"Test Secondary Cloud Exact KeyWord Third",Codeyiizen.com,13,No,Us
+GoogleSearchResult,https://www.google.com/,"Test Secondary Cloud Exact KeyWord Second",Codeyiizen.com,91,No,CK
+GoogleSearchResult,https://www.google.com/,"Test Secondary Cloud Exact KeyWord First",Codeyiizen.com,23,No,IN
+GoogleSearchResult,https://www.google.com/,"Test Secondary Cloud Exact KeyWord Third",Codeyiizen.com,10,No,Us
+GoogleSearchResult,https://www.google.com/,"Test Secondary Cloud Exact KeyWord First",Codeyiizen.com,55,No,IN
+GoogleSearchResult,https://www.google.com/,"Test Secondary Cloud Exact KeyWord Second",Codeyiizen.com,19,No,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Partial KeyWord First Test Secondary",Codeyiizen.com,31,No,CK
+GoogleSearchResult,https://www.google.com/,"Cloud Partial KeyWord First Test Secondary",Codeyiizen.com,80,No,Us
+GoogleSearchResult,https://www.google.com/,"Cloud Partial KeyWord First Test Secondary",Codeyiizen.com,41,No,Us
+GoogleSearchResult,https://www.google.com/,"Cloud Partial KeyWord Third Test Secondary",Codeyiizen.com,65,No,CK
+GoogleSearchResult,https://www.google.com/,"Cloud Partial KeyWord First Test Secondary",Codeyiizen.com,81,No,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Partial KeyWord Third Test Secondary",Codeyiizen.com,33,No,CK
+GoogleSearchResult,https://www.google.com/,"Cloud Partial KeyWord Second Test Secondary",Codeyiizen.com,29,No,CK
+GoogleSearchResult,https://www.google.com/,"Cloud Partial KeyWord Second Test Secondary",Codeyiizen.com,78,No,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Partial KeyWord First Test Secondary",Codeyiizen.com,21,No,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Partial KeyWord Third Test Secondary",Codeyiizen.com,28,No,IN
+GoogleSearchResult,https://www.google.com/,"cloud Partial KeyWord Third Test Brand",Codeyiizen.com,27,No,CK
+GoogleSearchResult,https://www.google.com/,"cloud Partial KeyWord Third Test Brand",Codeyiizen.com,73,No,IN
+GoogleSearchResult,https://www.google.com/,"cloud Partial KeyWord Second Test Brand",Codeyiizen.com,18,No,Us
+GoogleSearchResult,https://www.google.com/,"cloud Partial KeyWord First Test Brand",Codeyiizen.com,18,No,Us
+GoogleSearchResult,https://www.google.com/,"cloud Partial KeyWord Third Test Brand",Codeyiizen.com,79,No,CK
+GoogleSearchResult,https://www.google.com/,"cloud Partial KeyWord First Test Brand",Codeyiizen.com,49,No,Us
+GoogleSearchResult,https://www.google.com/,"cloud Partial KeyWord Third Test Brand",Codeyiizen.com,32,No,Us
+GoogleSearchResult,https://www.google.com/,"cloud Partial KeyWord Second Test Brand",Codeyiizen.com,24,No,IN
+GoogleSearchResult,https://www.google.com/,"cloud Partial KeyWord First Test Brand",Codeyiizen.com,94,No,Us
+GoogleSearchResult,https://www.google.com/,"cloud Partial KeyWord Third Test Brand",Codeyiizen.com,44,No,CK
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,14,No,CK
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,69,No,Us
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,51,No,CK
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,68,No,CK
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,100,No,CK
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,67,No,IN
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,74,No,CK
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,26,No,Us
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,49,No,Us
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,90,No,CK
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,73,No,CK
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,72,No,Us
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,47,No,IN
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,58,No,IN
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,15,No,Us
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,82,No,CK
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,49,No,Us
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,17,No,Us
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,48,No,CK
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,12,No,Us
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,46,No,IN
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,33,No,Us
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,78,No,Us
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,29,No,CK
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,65,No,CK
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,95,No,IN
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,100,No,IN
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,15,No,IN
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,100,No,IN
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,15,No,IN
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,71,No,CK
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,38,No,CK
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,43,No,CK
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,94,No,IN
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,93,No,Us
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,82,No,Us
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,23,No,Us
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,15,No,CK
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,30,No,IN
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,26,No,IN
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,21,No,Us
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,86,No,CK
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,96,No,IN
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,54,No,CK
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,58,No,IN
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,87,No,Us
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,47,No,CK
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,38,No,IN
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,17,No,CK
+GoogleSearchResult,https://www.google.com/,,Codeyiizen.com,15,No,IN

@@ -1,0 +1,31 @@
+﻿page_type,url,options.query,options.result_url,options.landing_min_time,options.landing_click,country
+GoogleSearchResult,https://www.google.com/,"Cloud Exact KeyWord First",allinone.com,119,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Exact KeyWord First",allinone.com,28,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Exact KeyWord First",allinone.com,118,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Exact KeyWord Third",allinone.com,28,Yes,IN
+GoogleSearchResult,https://www.google.com/," Cloud Exact KeyWord Third",allinone.com,116,Yes,IN
+GoogleSearchResult,https://www.google.com/," Cloud Exact KeyWord Second",allinone.com,120,Yes,IN
+GoogleSearchResult,https://www.google.com/," Cloud Exact KeyWord First",allinone.com,78,Yes,IN
+GoogleSearchResult,https://www.google.com/," Cloud Exact KeyWord First",allinone.com,51,Yes,IN
+GoogleSearchResult,https://www.google.com/," Cloud Exact KeyWord Second",allinone.com,120,Yes,IN
+GoogleSearchResult,https://www.google.com/," Cloud Exact KeyWord Third",allinone.com,15,Yes,IN
+GoogleSearchResult,https://www.google.com/," Cloud Exact KeyWord Second",allinone.com,78,Yes,IN
+GoogleSearchResult,https://www.google.com/," Cloud Exact KeyWord First",allinone.com,119,Yes,IN
+GoogleSearchResult,https://www.google.com/," Cloud Exact KeyWord First",allinone.com,104,Yes,IN
+GoogleSearchResult,https://www.google.com/," Cloud Exact KeyWord Second",allinone.com,42,Yes,IN
+GoogleSearchResult,https://www.google.com/," Cloud Exact KeyWord Third",allinone.com,25,Yes,IN
+GoogleSearchResult,https://www.google.com/," Cloud Exact KeyWord First",allinone.com,49,Yes,IN
+GoogleSearchResult,https://www.google.com/," Cloud Exact KeyWord First",allinone.com,10,Yes,IN
+GoogleSearchResult,https://www.google.com/," Cloud Exact KeyWord Second",allinone.com,56,Yes,IN
+GoogleSearchResult,https://www.google.com/,"Cloud Partial KeyWord Second ",allinone.com,39,Yes,CS
+GoogleSearchResult,https://www.google.com/,"Cloud Partial KeyWord Third ",allinone.com,98,Yes,CS
+GoogleSearchResult,https://www.google.com/,"Cloud Partial KeyWord Third ",allinone.com,69,Yes,CS
+GoogleSearchResult,https://www.google.com/,"Cloud Partial KeyWord Second ",allinone.com,118,Yes,CS
+GoogleSearchResult,https://www.google.com/,"Cloud Partial KeyWord Second ",allinone.com,13,Yes,CS
+GoogleSearchResult,https://www.google.com/,"Cloud Partial KeyWord First ",allinone.com,47,Yes,CS
+GoogleSearchResult,https://www.google.com/,"Cloud Partial KeyWord Second ",allinone.com,83,Yes,CS
+GoogleSearchResult,https://www.google.com/,"cloud Partial KeyWord First ",allinone.com,107,No,CS
+GoogleSearchResult,https://www.google.com/,"cloud Partial KeyWord Second ",allinone.com,45,No,CS
+GoogleSearchResult,https://www.google.com/,"cloud Partial KeyWord Second ",allinone.com,75,No,CK
+GoogleSearchResult,https://www.google.com/,"cloud Partial KeyWord Third ",allinone.com,106,No,CK
+GoogleSearchResult,https://www.google.com/,"cloud Partial KeyWord Third ",allinone.com,84,No,CK

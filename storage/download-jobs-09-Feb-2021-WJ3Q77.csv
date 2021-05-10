@@ -1,0 +1,6 @@
+﻿page_type,url,options.resultQuery,options.result_url,options.landing_min_time,options.landing_click,country
+GoogleSearchResult,https://www.google.com/,"Lorem-1 Ipsum is simply dummy text of the printing and typesetting industry",cas.com.bd,32,Yes,
+GoogleSearchResult,https://www.google.com/,"Software Developer Lorem-2 Ipsum is simply dummy text of the printing and typesetting industry.",cas.com.bd,71,No,
+GoogleSearchResult,https://www.google.com/,"ui Developer Lorem-2 Ipsum is simply dummy text of the printing and typesetting industry.",cas.com.bd,39,No,
+GoogleSearchResult,https://www.google.com/,"lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem-2 Ipsum is simply dummy text of the printing and typesetting industry.",cas.com.bd,70,No,
+GoogleSearchResult,https://www.google.com/," Android Developer",cas.com.bd,102,No,
