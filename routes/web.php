@@ -49,7 +49,7 @@ Route::post('forgot-password/{token}', 'AuthController@forgotPostPassword')->nam
         Route::post('/add', 'AdminManagementController@addPost')->name('add.post');
         
     });
-	Route::prefix('/projects')->middleware('auth')->name('projects.')->group(static function() {
+	Route::prefix('/projects')->middleware('auth')->name('campaigns.')->group(static function() {
         Route::get('/', 'ProjectController@index')->name('index');
 		Route::get('/edit/{id}', 'ProjectController@getEdit')->name('edit');
         Route::post('/edit/{id}', 'ProjectController@postEdit')->name('edit.post');
@@ -73,7 +73,7 @@ Route::post('forgot-password/{token}', 'AuthController@forgotPostPassword')->nam
         Route::post('/partial/keyword/list', 'ProjectController@getProjectPartialKeywordList')->name('partialkeyword.list');
 		
     });
-	Route::prefix('/jobs')->middleware('auth')->name('jobs.')->group(static function() {
+	Route::prefix('/jobs')->middleware('auth')->name('leads.')->group(static function() {
         Route::get('/', 'JobController@index')->name('index'); 
 		Route::get('/add', 'JobController@add')->name('add');
 		Route::get('/edit/{id}', 'JobController@getEdit')->name('edit');
@@ -99,32 +99,3 @@ Route::prefix('/api/v1')->name('api.v1.')->group(static function() {
    Route::get('/project-list','Api\ApiController@projectList')->name('project.list');
    Route::get('/project-url-list/{id}','Api\ApiController@projectUrlList')->name('project.url.list');
 });
-
-/* Admin Route End */
-/* Admin User Route Start */
-
-// Route::get('admin-user/login', 'subAdmin\AuthController@login')->name('admin-user.login');
-// Route::post('admin-user/login', 'subAdmin\AuthController@loginPost')->name('admin-user.login.post');
-// Route::prefix('admin-user')->middleware('adminUser')->name('admin-user.')->group(function() {
-    // Route::get('/', 'subAdmin\DashboardController@index')->name('dashboard');
-    // Route::get('/logout', 'subAdmin\AuthController@logout')->name('logout');
-    // Route::prefix('/project')->name('project.')->group(static function() {
-        // Route::get('/', 'subAdmin\ProjectController@index')->name('index');
-		// Route::get('/edit/{id}', 'subAdmin\ProjectController@getEdit')->name('edit');
-        // Route::post('/edit/{id}', 'subAdmin\ProjectController@postEdit')->name('edit.post');
-		// Route::get('/view/{id}', 'subAdmin\ProjectController@getProjectView')->name('view');
-        // Route::get('/remove/{id}', 'subAdmin\ProjectController@remove')->name('remove');
-        // Route::get('/add', 'subAdmin\ProjectController@add')->name('add');
-        // Route::post('/add', 'subAdmin\ProjectController@addPost')->name('add.post');
-		// Route::get('/viewurl/{id}', 'subAdmin\ProjectController@getProjectUrl')->name('viewurl');
-		// Route::get('/addkeyword/{id}', 'subAdmin\ProjectController@addkeyword')->name('addkeyword');
-		// Route::post('/addkeyword', 'subAdmin\ProjectController@addKeywordPost')->name('addkeyword.post');
-		// Route::get('keyword/remove/{id}', 'subAdmin\ProjectController@removeUrlKeyword')->name('keyword.remove');
-    // });
-    // Route::prefix('/job')->name('job.')->group(static function() {
-        // Route::get('/', 'subAdmin\JobController@index')->name('index'); 
-		  // Route::get('/add', 'subAdmin\JobController@add')->name('add');
-    // });
-// });
-
-/* Admin User Route End */

@@ -3,7 +3,7 @@
 	<!--begin::Head-->
 	<head>
 	   <meta charset="utf-8" />
-		<title>Login | Statuscrawl </title>
+		<title>Login | {{ config('constants.SITE_NAME') }}</title>
 		<meta name="description" content="Login page example" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		<link rel="canonical" href="" />
@@ -11,7 +11,7 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 		<!--end::Fonts-->
 		<!--begin::Page Custom Styles(used by this page)-->
-		<link href="{{ url('public/admin')}}/assets/css/pages/login/login-1.css" rel="stylesheet" type="text/css" />
+		<link href="{{ url('public/admin')}}/assets/css/pages/login/login-2.css" rel="stylesheet" type="text/css" />
 		<!--end::Page Custom Styles-->
 		<!--begin::Global Theme Styles(used by all pages)-->
 		<link href="{{ url('public/admin')}}/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />

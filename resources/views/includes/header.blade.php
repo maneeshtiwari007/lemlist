@@ -6,7 +6,7 @@
 		<!--begin::Header Logo-->
 		<div class="header-logo">
 			<a href="{{ route('dashboard') }}">
-				<img alt="Logo" src="{{ url('public/admin/assets/img/cloud-crawler-logo.png') }}" />
+				<h3>{{ config('constants.SITE_NAME') }}</h3>
 			</a>
 		</div>
 		<!--end::Header Logo-->
@@ -29,15 +29,15 @@
 					</a>
 				</li>
 			@endif
-				<li class="menu-item menu-item-submenu menu-item-rel menu-item-{{Request::is('projects*') ? 'active' : ''}}" data-menu-toggle="click" aria-haspopup="true">
+				<li class="menu-item menu-item-submenu menu-item-rel menu-item-{{Request::is('campaigns*') ? 'active' : ''}}" data-menu-toggle="click" aria-haspopup="true">
 					<a href="{{ route('projects.index') }}" class="menu-link">
-						<span class="menu-text">Projects</span>
+						<span class="menu-text">Campaigns</span>
 						<i class="menu-arrow"></i>
 					</a>
 				</li>
-				<li class="menu-item menu-item-submenu menu-item-rel menu-item-{{Request::is('jobs*') ? 'active' : ''}}" data-menu-toggle="click" aria-haspopup="true">
+				<li class="menu-item menu-item-submenu menu-item-rel menu-item-{{Request::is('leads*') ? 'active' : ''}}" data-menu-toggle="click" aria-haspopup="true">
 					<a href="{{ route('jobs.index') }}" class="menu-link">
-						<span class="menu-text">Jobs</span>
+						<span class="menu-text">Upload Leads</span>
 						<i class="menu-arrow"></i>
 					</a>
 				</li>

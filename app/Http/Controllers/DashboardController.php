@@ -28,26 +28,10 @@ class DashboardController extends Controller
     }
     public function index(){
 		$arrContent = array();
-		$arrContent['title'] = "Dashboard | Statuscrawl";
         $auth = Auth::user();
-		$getRecentProjects = $this->projectRepositery->getRecentProjects();
-		$getTotalProjects = $this->projectRepositery->getTotalProjectsCount();
-		$getRecentJobs = $this->jobRepositery->getRecentJobs();
-		$getTotalJobs = $this->jobRepositery->getTotalJobsCount();
-		$getTotalMyJobs = $this->jobRepositery->getTotalMyJobsCount($auth->id);
-		$getMyJobs = $this->jobRepositery->getMyJobs($auth->id);
 		
 		return view('index',[
-            'userCount'=>User::where('role_id',2)->count(),
-			'projectCount'=>Project::count(),
-			'jobCount'=>Job::count(),
-			'arrContent'=>$arrContent,
-			'getRecentProjects'=>$getRecentProjects,
-			'getRecentJobs'=>$getRecentJobs,
-			'getTotalJobs'=>$getTotalJobs,
-			'getTotalProjects'=>$getTotalProjects,
-			'getTotalMyJobs'=>$getTotalMyJobs,
-			'getMyJobs'=>$getMyJobs
+            'userCount'=>User::where('role_id',2)->count()
         ]);
     }
 

@@ -6,7 +6,7 @@
 		<meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="_token" content="{{csrf_token()}}">
-        <title>{{ (!empty($arrContent['title']))? $arrContent['title']: 'Cloud Crawler' }}</title>
+        <title>@yield('title') | {{ config('constants.SITE_NAME') }}</title>
 		<link rel="canonical" href="#" />
 		<!--begin::Fonts-->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
