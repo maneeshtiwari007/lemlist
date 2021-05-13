@@ -3,14 +3,11 @@
 <div class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between">
 	<!--begin::Copyright-->
 	<div class="text-dark order-2 order-md-1">
-		<span class="text-muted font-weight-bold mr-2">{{ date('Y') }}©</span>
-		<a href="#" class="text-dark-75 text-hover-primary">Statuscrawl </a>
+		<span class="text-muted font-weight-bold mr-2">©</span>
+		<a target="_blank"  href="https://statuslabs.com/" class="text-dark-75 text-hover-primary">{{ date('Y') }} Status Labs – Digital Reputation Management – Inc. 5000 List 2016, 2017, 2018, 2019. All rights reserved. </a>
 	
 	</div>
-	<div class="text-dark order-2 order-md-1">
-		<a href="#" onclick="window.open('https://www.sitelock.com/verify.php?site=statuscrawl.io','SiteLock','width=600,height=600,left=160,top=170');" ><img style="max-width: 55px;" class="img-responsive" alt="SiteLock" title="SiteLock" src="//shield.sitelock.com/shield/statuscrawl.io" /></a>
-		
-		</div>
+	
 	
 	<div class="text-dark order-2 order-md-1">
 		<span class="text-muted font-weight-bold mr-2">Develop by:</span>

@@ -30,13 +30,13 @@
 				</li>
 			@endif
 				<li class="menu-item menu-item-submenu menu-item-rel menu-item-{{Request::is('campaigns*') ? 'active' : ''}}" data-menu-toggle="click" aria-haspopup="true">
-					<a href="{{ route('projects.index') }}" class="menu-link">
+					<a href="{{ route('campaigns.index') }}" class="menu-link">
 						<span class="menu-text">Campaigns</span>
 						<i class="menu-arrow"></i>
 					</a>
 				</li>
 				<li class="menu-item menu-item-submenu menu-item-rel menu-item-{{Request::is('leads*') ? 'active' : ''}}" data-menu-toggle="click" aria-haspopup="true">
-					<a href="{{ route('jobs.index') }}" class="menu-link">
+					<a href="{{ route('leads.index') }}" class="menu-link">
 						<span class="menu-text">Upload Leads</span>
 						<i class="menu-arrow"></i>
 					</a>

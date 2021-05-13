@@ -165,35 +165,6 @@
 						</div>
 					</a>
 					<!--end:Item-->
-					<!--begin::Item-->
-					<a href="{{ route('api.v1.access-token')}}" class="navi-item">
-						<div class="navi-link">
-							<div class="symbol symbol-40 bg-light mr-3">
-								<div class="symbol-label">
-								<span class="svg-icon svg-icon-primary">
-									<!--begin::Svg Icon | path:assets/media/svg/icons/General/Settings-2.svg-->
-									<svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-											<rect x="0" y="0" width="24" height="24"></rect>
-											<path d="M5,8.6862915 L5,5 L8.6862915,5 L11.5857864,2.10050506 L14.4852814,5 L19,5 L19,9.51471863 L21.4852814,12 L19,14.4852814 L19,19 L14.4852814,19 L11.5857864,21.8994949 L8.6862915,19 L5,19 L5,15.3137085 L1.6862915,12 L5,8.6862915 Z M12,15 C13.6568542,15 15,13.6568542 15,12 C15,10.3431458 13.6568542,9 12,9 C10.3431458,9 9,10.3431458 9,12 C9,13.6568542 10.3431458,15 12,15 Z" fill="#000000"></path>
-										</g>
-									</svg>
-									<!--end::Svg Icon-->
-								</span>
-
-								</div>
-							</div>
-							
-							<div class="navi-text">
-								<div class="font-weight-bold">Configure</div>
-								<div class="text-muted">Configure Crawler</div>
-							</div>
-							
-						</div>
-					</a>
-					<!--end:Item-->
-					
-					
 					
 				</div>
 				<!--end::Nav-->
@@ -209,10 +180,7 @@
 	
 		
 		
-		<script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script>
-		<!--begin::Global Config(global config for global JS scripts)-->
-		<script>var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1400 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#3699FF", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#8950FC", "warning": "#FFA800", "danger": "#F64E60", "light": "#E4E6EF", "dark": "#181C32" }, "light": { "white": "#ffffff", "primary": "#E1F0FF", "secondary": "#EBEDF3", "success": "#C9F7F5", "info": "#EEE5FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#3F4254", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#EBEDF3", "gray-300": "#E4E6EF", "gray-400": "#D1D3E0", "gray-500": "#B5B5C3", "gray-600": "#7E8299", "gray-700": "#5E6278", "gray-800": "#3F4254", "gray-900": "#181C32" } }, "font-family": "Poppins" };</script>
-		<!--end::Global Config-->
+		
 		<!--begin::Global Theme Bundle(used by all pages)-->
 		<script src="{{ url('public/admin')}}/assets/plugins/global/plugins.bundle.js"></script>
 		<script src="{{ url('public/admin')}}/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
