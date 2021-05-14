@@ -98,27 +98,13 @@ var KTWizard5 = function () {
 			_formEl,
 			{
 				fields: {
-					firstname: {
+					file_uploaded: {
 						validators: {
 							notEmpty: {
-								message: 'First name is required'
+								message: 'Csv file is required'
 							}
 						}
 					},
-					lastname: {
-						validators: {
-							notEmpty: {
-								message: 'Last name is required'
-							}
-						}
-					},
-					phone: {
-						validators: {
-							notEmpty: {
-								message: 'Phone is required'
-							}
-						}
-					}
 				},
 				plugins: {
 					trigger: new FormValidation.plugins.Trigger(),

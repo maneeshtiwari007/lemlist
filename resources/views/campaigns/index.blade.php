@@ -1,6 +1,6 @@
 @extends('layout.auth')
 @section('title')
-Dashboard
+Campaigns
 @endsection
 @section('content')
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
@@ -80,9 +80,6 @@ Dashboard
 @endsection
 @section('script')
 <script>
-        $.ajaxSetup({
-                headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')}
-        });
 		$('#exports-table').DataTable({
             dom: 'Bfrtip',
             buttons: [],

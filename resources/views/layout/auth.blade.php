@@ -28,6 +28,7 @@
 		<!--end::Layout Themes-->
 		<link rel="stylesheet" href="{{ url('public/admin/assets/js/parsleyjs/parsley.css') }}">
 		<link rel="stylesheet" href="{{ url('public/admin/assets/css/custom.css') }}">
+		@yield('css')
 		<link rel="shortcut icon" href="#" />
 		 <script>
             var BASEURL = "{{ url('/') }}";
@@ -200,7 +201,11 @@
 		<!--end::Page Scripts-->
 		 <script src="{{ url('public/admin/assets/js/parsleyjs/parsley.min.js') }}"></script>
 		<!--begin::Page Vendors(used by this page)-->
-		
+		<script>
+			 $.ajaxSetup({
+                headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')}
+        	});
+		</script>
 		 <script src="{{ url('public/admin/assets/js/custom.js') }}"></script>
 		 
 		 @yield('script')

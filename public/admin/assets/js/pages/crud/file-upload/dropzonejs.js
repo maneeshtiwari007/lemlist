@@ -11,7 +11,7 @@ var KTDropzoneDemo = function () {
     var demo1 = function () {
         // single file upload
         $('#kt_dropzone_1').dropzone({
-            url: "https://keenthemes.com/scripts/void.php", // Set the url for your upload script location
+            url: upload_file_url, // Set the url for your upload script location
             paramName: "file", // The name that will be used to transfer the file
             maxFiles: 1,
             maxFilesize: 5, // MB

@@ -54,15 +54,7 @@ Route::post('forgot-password/{token}', 'AuthController@forgotPostPassword')->nam
 		Route::post('/sync-with-lemlist', 'Admin\CampaignController@sync_with_lemlist')->name('sync-with-lemlist');
         Route::get('/get-campaigns', 'Admin\CampaignController@get_campaigns')->name('get-campaigns');
     });
-	Route::prefix('/jobs')->middleware('auth')->name('leads.')->group(static function() {
-        Route::get('/', 'JobController@index')->name('index'); 
-		Route::get('/add', 'JobController@add')->name('add');
-		Route::get('/edit/{id}', 'JobController@getEdit')->name('edit');
-		Route::get('/remove/{id}', 'JobController@remove')->name('remove');
-		Route::get('/view/{id}', 'JobController@getView')->name('view');
-		Route::get('/csv/download/{id}', 'JobController@getCsvDownload')->name('csv.download');
-        Route::post('/edit/{id}', 'JobController@postEdit')->name('edit.post');
-		Route::post('/add', 'JobController@addPost')->name('add.post');
-		Route::post('/projecturllist', 'JobController@getProjectUrlList')->name('projecturl.list');
-		Route::post('/projecturllistdata', 'JobController@getProjectUrlListData')->name('projecturldata.list');
+	Route::prefix('/leads')->middleware('auth')->name('leads.')->group(static function() {
+        Route::get('/upload-leads', 'Admin\LeadController@upload_leads')->name('upload-leads');
+        Route::post('/upload-csv-file','Admin\LeadController@upload_csv_file')->name('upload-csv-file');
      });

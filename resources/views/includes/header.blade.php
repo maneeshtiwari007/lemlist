@@ -36,7 +36,7 @@
 					</a>
 				</li>
 				<li class="menu-item menu-item-submenu menu-item-rel menu-item-{{Request::is('leads*') ? 'active' : ''}}" data-menu-toggle="click" aria-haspopup="true">
-					<a href="{{ route('leads.index') }}" class="menu-link">
+					<a href="{{ route('leads.upload-leads') }}" class="menu-link">
 						<span class="menu-text">Upload Leads</span>
 						<i class="menu-arrow"></i>
 					</a>
