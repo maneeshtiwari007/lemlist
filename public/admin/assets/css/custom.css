@@ -295,6 +295,23 @@
     border: 1px solid #8950FC;
 }
 
+#kt_header{
+    background: #5400ff !important;
+}
+#kt_header .menu-text, #kt_quick_user_toggle > span{
+    color: white !important;
+}
+#kt_header .menu-item.menu-item-active > .menu-link,  #kt_header .menu-item .menu-link:hover{
+    background-color: rgba(0,0,0, 0.8);
+}
+#kt_quick_user_toggle:hover{
+    background-color: rgba(0,0,0, 0.8) !important;
+    color: white;
+}
+#kt_header_menu_wrapper h3{
+    color: white;
+}
+
 
 
 

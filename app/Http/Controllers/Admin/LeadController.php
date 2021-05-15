@@ -8,8 +8,7 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\CampaignRepository;
-use Illuminate\Contracts\View\View;
-use Yajra\DataTables\DataTables;
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 
 class LeadController extends Controller{
 
@@ -20,12 +19,15 @@ class LeadController extends Controller{
     }
 
     public function upload_leads(){
-		return view('leads.upload_leads',[
-        ]);
+        $arrCampaigns = $this->objCampaignRepositery->getAllCampaigns();
+		return view('leads.upload_leads',['arrCampaigns'=>$arrCampaigns]);
     }
 
     public function upload_csv_file(Request $request){
         if ($request->ajax()){
+            $path = $request->file('file')->getRealPath();
+            $data = array_map('str_getcsv', file($path));
+            var_dump($data);
             return response("done");
         }
     } 

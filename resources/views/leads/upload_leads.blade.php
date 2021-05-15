@@ -145,12 +145,33 @@ Upload Leads
                                 <div class="pb-5" data-wizard-type="step-content">
                                     <!--begin::Title-->
                                     <div class="pb-10 pb-lg-15">
-                                        <h3 class="font-weight-bolder text-dark font-size-h2">Select The Campaigns</h3>
+                                        <h3 class="font-weight-bolder text-dark font-size-h2 pb-3">Select The Campaigns</h3>
+                                        <label class="checkbox checkbox-lg">
+                                            <input type="checkbox" name="Checkboxes4" id="select_all_campaigns" value="">
+                                            <span></span>&nbsp;&nbsp;&nbsp; <strong>Select All </strong>
+                                        </label>
                                     </div>
                                     <!--end::Title-->
                                     <!--end::Row-->
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6">
+                                    <div class="row" style="max-height: 500px; overflow-y:scroll">
+                                        @if (!empty($arrCampaigns))
+                                            @foreach ($arrCampaigns as $item)
+                                            <div class="col-lg-6 col-md-6">
+                                                <!--end::Form Group-->
+                                                <div class="form-group">
+                                                    <div class="checkbox-list">
+                                                        <label class="checkbox checkbox-lg">
+                                                            <input class="campaigns_checkbox" type="checkbox" name="campaigns[]" value="{{$item->campaign_name}}">
+                                                            <span></span>{{$item->campaign_name}}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <!--begin::Form Group-->
+                                            </div>
+                                            @endforeach
+                                        @endif
+                                        
+                                        {{-- <div class="col-lg-6 col-md-6">
                                             <!--end::Form Group-->
                                             <div class="form-group">
                                                 <div class="checkbox-list">
@@ -160,20 +181,8 @@ Upload Leads
                                                     </label>
                                                 </div>
                                             </div>
-                                            <!--begin::Form Group-->
-                                        </div>
-                                        <div class="col-lg-6 col-md-6">
                                             <!--end::Form Group-->
-                                            <div class="form-group">
-                                                <div class="checkbox-list">
-                                                    <label class="checkbox">
-                                                        <input type="checkbox" name="Checkboxes4">
-                                                        <span></span>Default
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <!--end::Form Group-->
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <!--begin::Row-->
                                 </div>
@@ -316,6 +325,15 @@ Upload Leads
                 }, 300)
             }
         });
+
+        $('body').on('click','#select_all_campaigns',function(e){
+            var $this = $(this);
+            if($this.is(":checked")){
+               $('.campaigns_checkbox').attr('checked','checked');
+            }else{
+                $('.campaigns_checkbox').removeAttr('checked');
+            }
+        })
 
     </script>
     

@@ -31,13 +31,7 @@ class CampaignRepository extends BaseRepository
     public function getAllCampaigns(){
 
             $campaigns = $this->_model;
-            // if(!empty($extraParams['user'])){
-            //      $jobs->where('jobs.created_by_user', $extraParams['user']);
-            //  }
-            //  if(!empty($extraParams['project'])){
-            //      $jobs->where('jobs.project_id', $extraParams['project']);
-            //  }
-            $campaigns->orderBy('id','desc')->get();
+            $campaigns = $campaigns->orderBy('id','desc')->get();
             return $campaigns;
     }
     public function getAllCampaignsWithDataTable(){
