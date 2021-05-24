@@ -55,6 +55,7 @@ Route::post('forgot-password/{token}', 'AuthController@forgotPostPassword')->nam
         Route::get('/get-campaigns', 'Admin\CampaignController@get_campaigns')->name('get-campaigns');
     });
 	Route::prefix('/leads')->middleware('auth')->name('leads.')->group(static function() {
-        Route::get('/upload-leads', 'Admin\LeadController@upload_leads')->name('upload-leads');
+        Route::get('/upload-leads', 'Admin\LeadController@index')->name('upload-leads');
         Route::post('/upload-csv-file','Admin\LeadController@upload_csv_file')->name('upload-csv-file');
+        Route::post('/upload-leads-data','Admin\LeadController@upload_leads')->name('upload-leads-data');
      });

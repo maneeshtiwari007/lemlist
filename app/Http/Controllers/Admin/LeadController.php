@@ -8,27 +8,32 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\CampaignRepository;
+use App\Repositories\LeadRepository;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 
 class LeadController extends Controller{
 
-    private $objCampaignRepositery;
-
-    public function __construct(CampaignRepository $campaignRepositery){
+    public function index(CampaignRepository $campaignRepositery){
         $this->objCampaignRepositery = $campaignRepositery;
-    }
-
-    public function upload_leads(){
         $arrCampaigns = $this->objCampaignRepositery->getAllCampaigns();
 		return view('leads.upload_leads',['arrCampaigns'=>$arrCampaigns]);
     }
 
+    function upload_leads(Request $request, LeadRepository $objLeadRepository)
+    {
+        $objLeadRepository->uploadLeadOnLemlist($request);
+        return redirect(route("leads.upload-leads"));
+    }
+
     public function upload_csv_file(Request $request){
         if ($request->ajax()){
-            $path = $request->file('file')->getRealPath();
-            $data = array_map('str_getcsv', file($path));
-            var_dump($data);
-            return response("done");
+            $request->validate([
+                'file' => 'required|mimes:xlx,csv,txt|max:1024*5',
+            ]);
+            $fileName = time().'.'.$request->file->getClientOriginalExtension();
+            $request->file->move(public_path('uploads/csv'), $fileName);
+            $arrReturnData = ['file_name'=>$fileName];
+            return response()->json($arrReturnData);
         }
     } 
 

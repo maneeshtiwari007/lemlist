@@ -1,7 +1,8 @@
 <div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
 <!--begin::Logo-->
 <a href="{{ route('dashboard') }}">
-	<img alt="Logo" src="{{ url('public/admin/assets/img/cloud-crawler-logo.png') }}" />
+	{{-- <img style="width: 50px;" alt="Logo" src="{{ url('public/admin')}}/assets/img/logo.jpg"> --}}
+	<h3>{{ config('constants.SITE_NAME') }}</h3>
 </a>
 <!--end::Logo-->
 <!--begin::Toolbar-->

@@ -6,6 +6,7 @@
 		<!--begin::Header Logo-->
 		<div class="header-logo">
 			<a href="{{ route('dashboard') }}">
+				{{-- <img style="width: 50px;" alt="Logo" src="{{ url('public/admin')}}/assets/img/logo.jpg"> --}}
 				<h3>{{ config('constants.SITE_NAME') }}</h3>
 			</a>
 		</div>

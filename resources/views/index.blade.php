@@ -115,11 +115,11 @@ Dashboard
 		<div class="row">
 		<div class="col-12">
 				<!--begin::Mixed Widget 1-->
-				
+					<h1 style="font-size: 70px;margin:15% auto 0 25%">Coming Soon</h1>
 					<!--begin::Row-->
 							<div class="row m-0">
 							@if(Auth::user()->role_id == 1)
-								<div class="col bg-light-warning px-6 py-8 rounded-xl mr-7 mb-7">
+								{{-- <div class="col bg-light-warning px-6 py-8 rounded-xl mr-7 mb-7">
 									<div class="row d-flex justify-content-center align-items-center">
 									<div class="col pr-0">
 										<span class="svg-icon svg-icon-3x svg-icon-primary d-block">
@@ -140,7 +140,7 @@ Dashboard
 								     </div>
 									</div>
 									
-								</div>
+								</div> --}}
 							@endif
 							</div>
 							<!--end::Row-->

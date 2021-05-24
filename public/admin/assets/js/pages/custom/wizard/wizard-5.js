@@ -34,7 +34,13 @@ var KTWizard5 = function () {
 				validator.validate().then(function (status) {
 					if (status == 'Valid') {
 						wizard.goTo(wizard.getNewStep());
-
+						if(wizard.getStep()==3){
+							var confirmCampaigns = "";
+							$("input:checkbox[class=campaigns_checkbox]:checked").each(function () {
+								confirmCampaigns+='<span id="'+$(this).attr("id")+'" class="label label-xl label-info label-inline mr-2 mb-2">'+$(this).attr("data-name")+'</span>';
+							});
+							$("#confirm_campaigns").html(confirmCampaigns);
+						}
 						KTUtil.scrollTop();
 					} else {
 						Swal.fire({
@@ -63,7 +69,7 @@ var KTWizard5 = function () {
 		// Submit event
 		_wizardObj.on('submit', function (wizard) {
 			Swal.fire({
-				text: "All is good! Please confirm the form submission.",
+				text: "Are you sure to submit on Lemlist ?.",
 				icon: "success",
 				showCancelButton: true,
 				buttonsStyling: false,
@@ -75,6 +81,10 @@ var KTWizard5 = function () {
 				}
 			}).then(function (result) {
 				if (result.value) {
+					var $this = $('#submitButtonUploadLead');
+					$this.html('Processing.....')
+					$this.attr('disabled','disabled')
+					$this.addClass('spinner spinner-white spinner-right')
 					_formEl.submit(); // Submit form
 				} else if (result.dismiss === 'cancel') {
 					Swal.fire({

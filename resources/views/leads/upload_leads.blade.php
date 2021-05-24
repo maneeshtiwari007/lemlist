@@ -113,7 +113,9 @@ Upload Leads
                         <!--end::Title-->
                         <!--begin::Form-->
                         <div class="d-flex justify-content-center flex-row-fluid">
-                            <form class="pb-5 w-100 w-md-450px w-lg-500px" novalidate="novalidate" id="kt_form">
+                            
+                            <form method="POST" action="{{ route('leads.upload-leads-data')}}" class="pb-5 w-100 w-md-500px w-lg-650px" novalidate="novalidate" id="kt_form">
+                                @csrf
                                 <!--begin: Wizard Step 1-->
                                 <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
                                     <!--begin::Title-->
@@ -161,7 +163,7 @@ Upload Leads
                                                 <div class="form-group">
                                                     <div class="checkbox-list">
                                                         <label class="checkbox checkbox-lg">
-                                                            <input class="campaigns_checkbox" type="checkbox" name="campaigns[]" value="{{$item->campaign_name}}">
+                                                            <input class="campaigns_checkbox" type="checkbox" name="campaigns[]" id="{{$item->campaign_id}}" value="{{$item->campaign_id}}" data-name="{{$item->campaign_name}}">
                                                             <span></span>{{$item->campaign_name}}
                                                         </label>
                                                     </div>
@@ -196,26 +198,9 @@ Upload Leads
                                     </div>
                                     <!--end::Title-->
                                     <!--begin::Section-->
-                                    <h4 class="font-weight-bolder mb-3">Accoun Settings:</h4>
-                                    <div class="text-dark-50 font-weight-bold line-height-lg mb-8">
-                                        <div>Nick Stone</div>
-                                        <div>+12233434-34</div>
-                                        <div>nick.stone@gmail.com</div>
-                                    </div>
-                                    <!--end::Section-->
-                                    <!--begin::Section-->
-                                    <h4 class="font-weight-bolder mb-3">Address Details:</h4>
-                                    <div class="text-dark-50 font-weight-bold line-height-lg mb-8">
-                                        <div>Address Line 1</div>
-                                        <div>Address Line 2</div>
-                                        <div>Melbourne 3000, VIC, Australia</div>
-                                    </div>
-                                    <!--end::Section-->
-                                    <!--begin::Section-->
-                                    <h4 class="font-weight-bolder mb-3">Support Channels:</h4>
-                                    <div class="text-dark-50 font-weight-bold line-height-lg mb-8">
-                                        <div>Overnight Delivery with Regular Packaging</div>
-                                        <div>Preferred Morning (8:00AM - 11:00AM) Delivery</div>
+                                    <h4 class="font-weight-bolder mb-3">Campaign Selected:</h4>
+                                    <div class="text-dark-50 font-weight-bold line-height-lg mb-8" id="confirm_campaigns">
+                                        
                                     </div>
                                     <!--end::Section-->
                                 </div>
@@ -237,7 +222,7 @@ Upload Leads
                                         </span>Previous</button>
                                     </div>
                                     <div>
-                                        <button type="button" class="btn btn-primary font-weight-bolder font-size-h6 pl-5 pr-8 py-4 my-3" data-wizard-type="action-submit">Submit
+                                        <button type="button" class="btn btn-primary font-weight-bolder font-size-h6 pl-5 pr-8 py-4 my-3" data-wizard-type="action-submit" id="submitButtonUploadLead">Submit
                                             <span class="svg-icon svg-icon-md ml-2">
                                                 <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Right-2.svg-->
                                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -315,15 +300,15 @@ Upload Leads
                     done();
                 }
             },
-            complete:function(file){
+            success: function (file, response) {
                 if(file.status=='success'){
-                    $('#file_uploaded').val("1");
+                    $('#file_uploaded').val(response.file_name);
                 }
                 var thisProgressBar = dropzone_id + " .dz-success";
                 setTimeout(function(){
                     $( thisProgressBar + " .dz-progress").css('opacity', '0');
                 }, 300)
-            }
+            },
         });
 
         $('body').on('click','#select_all_campaigns',function(e){
