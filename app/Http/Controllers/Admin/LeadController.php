@@ -22,6 +22,7 @@ class LeadController extends Controller{
     function upload_leads(Request $request, LeadRepository $objLeadRepository)
     {
         $objLeadRepository->uploadLeadOnLemlist($request);
+        Session::flash('success', 'Leads uploaded successfully!'); 
         return redirect(route("leads.upload-leads"));
     }
 
