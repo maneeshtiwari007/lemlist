@@ -37,7 +37,8 @@ class LemlistApi{
     * @author Shiv Kumar Tiwari
     */
     public function callApiWithData($arrData, $extra_kwrgs=""){
-        //echo $jsonDecodedData = "'".json_encode($arrData)."'";
+        //echo $jsonDecodedData = json_encode($arrData);
+        //echo $this->apiUrl."/".$extra_kwrgs;exit;
         $curl = curl_init();
         $arrCurl = array(
             CURLOPT_URL => $this->apiUrl."/".$extra_kwrgs,
