@@ -11,7 +11,7 @@ use Yajra\DataTables\DataTables;
 
 class CampaignRepository extends BaseRepository
 {
-    
+
     /**
      * get model
      * @return string
@@ -28,21 +28,39 @@ class CampaignRepository extends BaseRepository
     * @return array of objects
     * @author Shiv Kumar Tiwari
     */
-    public function getAllCampaigns(){
+    public function getAllCampaigns()
+    {
 
-            $campaigns = $this->_model;
-            $campaigns = $campaigns->orderBy('id','desc')->get();
-            return $campaigns;
+        $campaigns = $this->_model;
+        $campaigns = $campaigns->where('is_delete', 0)->orderBy('id', 'desc')->get();
+        return $campaigns;
     }
-    public function getAllCampaignsWithDataTable(){
+    public function getAllCampaignsWithDataTable()
+    {
 
-        $campaigns = $this->_model->where(DB::raw("1"),1);
+        $campaigns = $this->_model->where('is_delete', 0);
         $table = new DataTables();
         return $table->eloquent($campaigns)
-                    ->editColumn('updated_at',function($data){
-                        return date("d M, Y H:i:s", strtotime($data->updated_at));
-                    })->addIndexColumn()->toJson();
-}
+            ->addColumn('all_chk', function ($data) {
+                return "<label class='checkbox checkbox-lg'><input type='checkbox' name='campaigns' id='chk_{$data->campaign_id}' class='campaigns_checkbox' value='{$data->campaign_id}'><span></span></label>";
+            })
+            ->editColumn('updated_at', function ($data) {
+                return date("d M, Y H:i:s", strtotime($data->updated_at));
+            })->addIndexColumn()
+            ->rawColumns(['all_chk'])
+            ->toJson();
+    }
+
+    /**
+
+     * Show the application dashboard.
+     *
+     * @return void
+     */
+
+    public function deleteRestoreAll($request, $varData){
+        $this->_model->whereIn('campaign_id',$request)->update(array('is_delete'=>$varData));
+    }
 
     /*
     * function to get all capaigns from Lemlist and save or update into our database
@@ -50,19 +68,20 @@ class CampaignRepository extends BaseRepository
     * @return void
     * @author Shiv Kumar Tiwari
     */
-    public function syncCampaign(){
+    public function syncCampaign()
+    {
         $user = Auth::user();
         $objLemlistApi = new LemlistApi('campaigns');
         $jsonData = $objLemlistApi->callApi();
-        if(!empty($jsonData)){
-            foreach($jsonData as $arrCmpData){
-                if(!empty($arrCmpData->name)){
-                    $arrCheck = ['campaign_id'=>$arrCmpData->_id];
+        if (!empty($jsonData)) {
+            foreach ($jsonData as $arrCmpData) {
+                if (!empty($arrCmpData->name)) {
+                    $arrCheck = ['campaign_id' => $arrCmpData->_id];
                     $attributes = [
-                        'campaign_id'=>$arrCmpData->_id,
-                        'campaign_name'=>$arrCmpData->name
+                        'campaign_id' => $arrCmpData->_id,
+                        'campaign_name' => $arrCmpData->name
                     ];
-                    $this->_model->updateOrCreate($arrCheck,$attributes);
+                    $this->_model->updateOrCreate($arrCheck, $attributes);
                 }
             }
         }

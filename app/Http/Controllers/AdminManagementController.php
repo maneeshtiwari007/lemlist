@@ -41,13 +41,13 @@ class AdminManagementController extends Controller
 							$resetPath = route('users.reset-password',['id'=>$row->id]);
 							$resetPassword = '<a href="'.$resetPath.'" class="btn btn-sm btn-icon btn-light-success mr-2" title="Reset Password"><i class="la la-lock reset-password"></i></a>';
 							$configurePath = route('users.configure',['id'=>$row->id]);
-							$configure = '<a href="'.$configurePath.'" class="btn btn-sm btn-icon btn-light-success mr-2" title="Configure Crawler"><i class="la la-cog configure Crawler"></i></a>';
+							//$configure = '<a href="'.$configurePath.'" class="btn btn-sm btn-icon btn-light-success mr-2" title="Configure Crawler"><i class="la la-cog configure Crawler"></i></a>';
 							$rPath = route('users.remove',['id'=>$row->id]);
 							$remove = '<a href="javascript:;" class="btn btn-sm btn-icon btn-light-danger mr-2 remove-user" data-id="'.$row->id.'" data-href="'.$rPath.'" id="user-delete-'.$row->id.'" data-toggle="modal" data-target="#success-modal" title="Remove"><i class="la la-close delete"></i></a>';
 							if($row->role_id !=1){
-								$action = $edit.' '.$resetPassword.' '.$configure.' '.$remove;
+								$action = $edit.' '.$resetPassword.''.$remove;
 							}else{
-								$action = $edit.' '.$resetPassword.' '.$configure;
+								$action = $edit.' '.$resetPassword.' ';
 							}
 							return $action;
 						  })

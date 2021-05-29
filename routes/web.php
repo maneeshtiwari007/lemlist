@@ -53,6 +53,7 @@ Route::post('forgot-password/{token}', 'AuthController@forgotPostPassword')->nam
         Route::get('/', 'Admin\CampaignController@index')->name('index');
 		Route::post('/sync-with-lemlist', 'Admin\CampaignController@sync_with_lemlist')->name('sync-with-lemlist');
         Route::get('/get-campaigns', 'Admin\CampaignController@get_campaigns')->name('get-campaigns');
+        Route::post('/delete-campaigns', 'Admin\CampaignController@delete_campaigns')->name('delete-campaigns');
     });
 	Route::prefix('/leads')->middleware('auth')->name('leads.')->group(static function() {
         Route::get('/upload-leads', 'Admin\LeadController@index')->name('upload-leads');

@@ -30,6 +30,21 @@ class CampaignController extends Controller{
             return ($arrCampaigns);
         }
     } 
+    // delete campaigns
+    public function delete_campaigns(Request $request){
+        if ($request->ajax()){
+            $varAction = $request->post('action');
+            if($varAction=='delete'){
+                $arrCampaigns = $this->objCampaignRepositery->deleteRestoreAll($request->post('cmp'),1);
+                Session::flash('success', 'Campaigns Deleted successfully!');
+            }else if($varAction=='restore'){
+                $arrCampaigns = $this->objCampaignRepositery->deleteRestoreAll($request->post('cmp'),0);
+                Session::flash('success', 'Campaigns Restored successfully!');
+            }
+            
+            return response('done');
+        }
+    } 
 
     public function sync_with_lemlist(Request $request){
         if ($request->ajax()){

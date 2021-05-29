@@ -49,15 +49,50 @@ Campaigns
                     <div class="card card-custom gutter-b">
                         <div class="card-header flex-wrap py-3">
                             <div class="card-title">
-                                <h3 class="card-label">All Campaigns
+                                <h3 class="card-label">All Campaigns</h3>
                             </div>
+                            <select class="form-control pull-right col-3 mt-3" id="actions">
+                                <option value="">Select Action</option>
+                                <option value="delete">Delete</option>
+                                {{-- <option value="restore">Restore</option> --}}
+                            </select>
                         </div>
                         <div class="card-body">
+
+                             <!--begin::success/error message-->
+                                    @if(session()->get('success'))
+                                    <div class="alert alert-custom alert-notice alert-light-success fade show" role="alert">
+                                        <div class="alert-icon"><i class="flaticon-warning"></i></div>
+                                        <div class="alert-text">{{ session()->get('success') }}  </div>
+                                        <div class="alert-close">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true"><i class="ki ki-close"></i></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                @endif
+                                @if(session()->get('error'))
+                                    <div class="alert alert-custom alert-notice alert-light-danger fade show" role="alert">
+                                        <div class="alert-icon"><i class="flaticon-warning"></i></div>
+                                        <div class="alert-text">{{ session()->get('error') }} </div>
+                                        <div class="alert-close">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true"><i class="ki ki-close"></i></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                @endif
+
                             <div class="table-responsive">
                                 <table class="table" id="exports-table">
                                     <thead>
                                         <tr>
-                                            <th scope="col">#</th>
+                                            <th scope="col">
+                                                <label class="checkbox checkbox-lg">
+                                                    <input type="checkbox" name="Checkboxes4" id="select_all_campaigns" value="">
+                                                    <span></span>
+                                                </label>
+                                            </th>
                                             <th scope="col">Campaign Id</th>
                                             <th scope="col">Campaign Name</th>
                                             <th scope="col">Last Synced</th>
@@ -77,6 +112,50 @@ Campaigns
     </div>
     <!--end::Entry-->
 </div>
+<!-- Button trigger modal-->
+
+<div id="success-modal" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Campaigns Removal Confirmation</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Are you sure you want remove these ?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+                <a type="button" id="remove-restore-campaigns" class="btn btn-primary text-white remove-activity">Yes</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="error-modal" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Action Confirmation</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Select at least one campaigns
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- End Remove Modal -->
 @endsection
 @section('script')
 <script>
@@ -101,7 +180,7 @@ Campaigns
                 ],
                 columnDefs: [ { orderable: false, targets: [0,1] } ],
             columns: [
-                { data: 'DT_RowIndex', searchable: false },
+                { data: 'all_chk', searchable: false },
                 { data: 'campaign_id' },
                 { data: 'campaign_name' },
                 { data: 'updated_at' },
@@ -117,6 +196,52 @@ Campaigns
         $(".search-filter").click(function(){
             $('#exports-table').DataTable().draw(true);
         });
+        $('body').on('click','#select_all_campaigns',function(e){
+            var $this = $(this);
+            if($this.is(":checked")){
+               $('.campaigns_checkbox').attr('checked','checked');
+            }else{
+                $('.campaigns_checkbox').removeAttr('checked');
+            }
+        })
+
+        var checkboxValues = [];
+        $('body').on('change','#actions',function(e){
+            if($(this).val()!=""){
+                $('input[name=campaigns]:checked').map(function() {
+                    checkboxValues.push($(this).val());
+                });
+                if(checkboxValues!=""){
+                    $('#success-modal').modal('show');
+                }else{
+                    $('#error-modal').modal('show');
+                }
+            }
+            
+        })
+
+        $('body').on('click','#remove-restore-campaigns',function(e){
+           if(checkboxValues!=""){
+                var $this = $(this);
+                $this.html('Processing.....')
+                $this.attr('disabled','disabled')
+                $this.addClass('spinner spinner-white spinner-right')
+                $.ajax({
+                    url:"<?php echo route('campaigns.delete-campaigns')?>",
+                    type:"POST",
+                    data:{
+                        "cmp":checkboxValues,
+                        "action":$('#actions').val()
+                    },
+                    success:function(response){
+                        window.location.reload();
+                    }
+                })
+           }
+        })
+
+        //$('input[name="locationthemes"]:checked').serialize()
+
         $('body').on('click','#syncWithLemlist',function(e){
             e.preventDefault();
             var $this = $(this)

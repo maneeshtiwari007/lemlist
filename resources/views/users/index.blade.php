@@ -178,10 +178,10 @@ $('#exports-table').DataTable({
 	],
 	searching: true
 });
-$("body").on("click",".remove-user",function(){
-	var id = $(this).attr('data-id');
-	var dataHref = $("#user-delete-"+id).attr('data-href');
-	$(".remove-activity").attr('href',dataHref);
+	$("body").on("click",".remove-user",function(){
+		var id = $(this).attr('data-id');
+		var dataHref = $("#user-delete-"+id).attr('data-href');
+		$(".remove-activity").attr('href',dataHref);
 	 });
 </script>
 @endsection
