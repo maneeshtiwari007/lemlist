@@ -54,7 +54,7 @@ class LeadRepository extends BaseRepository
                         'Source'=>$csvRow[8],
                         'SDR'=>$csvRow[9],
                     ];
-                    $jsonData = $objLemlistApi->callApiWithData($arrPostData,"{$val}/leads/{$varEmail}?deduplicate=true");
+                    //$jsonData = $objLemlistApi->callApiWithData($arrPostData,"{$val}/leads/{$varEmail}?deduplicate=true");
                     //var_dump($jsonData);
                     $is_inserted_lemlist = !empty($jsonData) ? 1 : 0;
                     $attributes = [
@@ -102,7 +102,7 @@ class LeadRepository extends BaseRepository
                             'SDR'=>$csvRow[9],
                         ];
 
-                        $jsonData = $objLemlistApi->callApiWithData($arrPostData,"{$val}/leads/{$varEmail}?deduplicate=true");
+                        //$jsonData = $objLemlistApi->callApiWithData($arrPostData,"{$val}/leads/{$varEmail}?deduplicate=true");
                         //var_dump($jsonData);
                         $is_inserted_lemlist = !empty($jsonData) ? 1 : 0;
                         $attributes = [
@@ -129,7 +129,7 @@ class LeadRepository extends BaseRepository
             }
             //exit;
         }
-        unlink(public_path('uploads/csv/'.$file_name));
+        //unlink(public_path('uploads/csv/'.$file_name));
     }
 
     /*

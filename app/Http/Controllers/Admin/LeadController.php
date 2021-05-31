@@ -21,6 +21,7 @@ class LeadController extends Controller{
 
     function upload_leads(Request $request, LeadRepository $objLeadRepository)
     {
+
         $objLeadRepository->uploadLeadOnLemlist($request);
         Session::flash('success', 'Leads uploaded successfully!'); 
         return redirect(route("leads.upload-leads"));
@@ -31,7 +32,11 @@ class LeadController extends Controller{
             $request->validate([
                 'file' => 'required|mimes:xlx,csv,txt|max:1024*5',
             ]);
-            $fileName = time().'.'.$request->file->getClientOriginalExtension();
+            $varOrginalNameWithExtention = $request->file->getClientOriginalName();
+            $varExtention = $request->file->getClientOriginalExtension();
+            $varOrginalNameWithoutExtention = trim(str_replace('.'.$varExtention,"",str_replace(" ", "-", $varOrginalNameWithExtention)));
+            //var_dump($varOrginalNameWithoutExtention);exit;
+            $fileName = $varOrginalNameWithoutExtention."-".time().'.'.$varExtention;
             $request->file->move(public_path('uploads/csv'), $fileName);
             $arrReturnData = ['file_name'=>$fileName];
             return response()->json($arrReturnData);
