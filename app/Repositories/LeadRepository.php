@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
 use App\Api\LemlistApi;
 use App\Lead;
+use App\Sheet;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
@@ -32,6 +33,11 @@ class LeadRepository extends BaseRepository
         //$user = Auth::user();
         $file_name = $request->post('file_uploaded');
         $all_campaigns = $request->post('campaigns');
+        $insertSheet = new Sheet();
+        $insertSheet->sheet_name = url('public/uploads/csv/'.$file_name);
+        $insertSheet->sheet_short_name = $file_name;
+        $insertSheet->uploaded_by = Auth::id();
+        $insertSheet->save();
         $data = array_map('str_getcsv', file(public_path('uploads/csv/'.$file_name)));
         $objLemlistApi = new LemlistApi('campaigns');
         $arrCampaignsData=[];
@@ -70,7 +76,8 @@ class LeadRepository extends BaseRepository
                         'source'=>$csvRow[8],
                         'sdr'=>$csvRow[9],
                         'uploaded_by'=>Auth::id(),
-                        'is_inserted_lemlist'=>$is_inserted_lemlist
+                        'is_inserted_lemlist'=>$is_inserted_lemlist,
+                        'uploaded_sheet_id'=>$insertSheet->id
                     ];
                     
                 }
@@ -118,7 +125,8 @@ class LeadRepository extends BaseRepository
                             'source'=>$csvRow[8],
                             'sdr'=>$csvRow[9],
                             'uploaded_by'=>Auth::id(),
-                            'is_inserted_lemlist'=>$is_inserted_lemlist
+                            'is_inserted_lemlist'=>$is_inserted_lemlist,
+                            'uploaded_sheet_id'=>$insertSheet->id
                         ];
                         $this->_model->create($attributes);
 
@@ -146,6 +154,46 @@ class LeadRepository extends BaseRepository
                     ->editColumn('updated_at',function($data){
                         return date("d M, Y H:i:s", strtotime($data->updated_at));
                     })->addIndexColumn()->toJson();
+    }
+    public function getAllSheetsWithDataTable(){
+        $sheets = Sheet::with('user')->orderBy('id','desc')->get();
+        $table = new DataTables();
+        return $table->of($sheets)
+            ->addColumn('action', function ($row) {
+                $viewPath = route('leads.list',['id'=>$row->id]);
+                $downloadPath = $row->sheet_name;
+                $view = '<a href="'.$viewPath.'" class="btn btn-sm btn-icon btn-light-success mr-2" title="View"><i class="la la-eye view"></i></a>';
+                $csvDownload = '<a href="'.$downloadPath.'" class="btn btn-sm btn-icon btn-light-success mr-2" title="Download CSV"><i class="la la-download  download"></i></a>';
+                $action = $csvDownload.' '.$view;
+                return $action;
+                })
+                ->editColumn('created_at',function($data){
+                    return date("d M, Y H:i:s", strtotime($data->created_at));
+                })->addIndexColumn()
+            ->toJson();
+    }
+    public function getLeadsWithDataTable($id){
+        $lead = $this->_model->with('sheet')->where('uploaded_sheet_id',$id)->orderBy('id','desc')->get();
+        $table = new DataTables();
+        return $table->of($lead)
+            ->addColumn('action', function ($row) {
+                $viewPath = route('leads.view',['id'=>$row->id]);
+                $view = '<a href="'.$viewPath.'" class="btn btn-sm btn-icon btn-light-success mr-2" title="View"><i class="la la-eye view"></i></a>';
+                $action = $view;
+                return $action;
+                })
+                ->editColumn('created_at',function($data){
+                    return date("d M, Y H:i:s", strtotime($data->created_at));
+                })->addIndexColumn()
+            ->toJson();
+    }
+    public function getLeadsWithId($id){
+        $lead = $this->_model->with('sheet')->where('id',$id)->first();
+        return $lead;
+    }
+    public function getSheetWithId($id){
+        $sheet = Sheet::where('id',$id)->first();
+        return $sheet;
     }
 
    
