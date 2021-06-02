@@ -59,4 +59,9 @@ Route::post('forgot-password/{token}', 'AuthController@forgotPostPassword')->nam
         Route::get('/upload-leads', 'Admin\LeadController@index')->name('upload-leads');
         Route::post('/upload-csv-file','Admin\LeadController@upload_csv_file')->name('upload-csv-file');
         Route::post('/upload-leads-data','Admin\LeadController@upload_leads')->name('upload-leads-data');
+        Route::get('/uploaded-leads', 'Admin\LeadController@uploadedLeads')->name('uploaded-leads');
+        Route::get('/get-sheets', 'Admin\LeadController@getSheets')->name('get-sheets');
+        Route::get('/list/{id}', 'Admin\LeadController@getLeads')->name('list');
+        Route::get('/get-leads/{id}', 'Admin\LeadController@getLeadList')->name('get-leads');
+        Route::get('/view/{id}', 'Admin\LeadController@getLeadView')->name('view');
      });

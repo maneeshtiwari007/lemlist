@@ -24,7 +24,7 @@ class LeadController extends Controller{
 
         $objLeadRepository->uploadLeadOnLemlist($request);
         Session::flash('success', 'Leads uploaded successfully!'); 
-        return redirect(route("leads.upload-leads"));
+        return redirect(route("leads.uploaded-leads"));
     }
 
     public function upload_csv_file(Request $request){
@@ -48,6 +48,30 @@ class LeadController extends Controller{
             $this->objCampaignRepositery->syncCampaign();
             return response()->json(array('processed'=>1));
         }
+    }
+
+    public function uploadedLeads(Request $request,LeadRepository $objLeadRepository){
+        return view('leads.uploaded_leads',[]);
+    }
+    public function getSheets(Request $request,LeadRepository $objLeadRepository){
+        if ($request->ajax()){
+            $arrSheets = $objLeadRepository->getAllSheetsWithDataTable();
+            return ($arrSheets);
+        }
+    }
+    public function getLeads(Request $request,$id,LeadRepository $objLeadRepository){
+        $arrSheet = $objLeadRepository->getSheetWithId($id);
+        return view('leads.list',['id'=>$id,'arrSheet'=>$arrSheet]);
+    }
+    public function getLeadList(Request $request,$id,LeadRepository $objLeadRepository){
+        if ($request->ajax()){
+            $arrLeads = $objLeadRepository->getLeadsWithDataTable($id);
+            return ($arrLeads);
+        }
+    }
+    public function getLeadView(Request $request,$id,LeadRepository $objLeadRepository){
+        $arrLead = $objLeadRepository->getLeadsWithId($id);
+        return view('leads.view',['id'=>$id,'arrLead'=>$arrLead]);
     }
 
 }
