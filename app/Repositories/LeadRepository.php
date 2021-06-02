@@ -161,10 +161,15 @@ class LeadRepository extends BaseRepository
         return $table->of($sheets)
             ->addColumn('action', function ($row) {
                 $viewPath = route('leads.list',['id'=>$row->id]);
-                $downloadPath = $row->sheet_name;
-                $view = '<a href="'.$viewPath.'" class="btn btn-sm btn-icon btn-light-success mr-2" title="View"><i class="la la-eye view"></i></a>';
-                $csvDownload = '<a href="'.$downloadPath.'" class="btn btn-sm btn-icon btn-light-success mr-2" title="Download CSV"><i class="la la-download  download"></i></a>';
-                $action = $csvDownload.' '.$view;
+                 $filePath = url('public/uploads/csv/'.$row->sheet_short_name);
+                 $downloadPath = $filePath;
+                 $view = '<a href="'.$viewPath.'" class="btn btn-sm btn-icon btn-light-success mr-2" title="View"><i class="la la-eye view"></i></a>';
+                 $csvDownload = '<a href="'.$downloadPath.'" class="btn btn-sm btn-icon btn-light-success mr-2" title="Download CSV"><i class="la la-download  download"></i></a>';
+                 if(!empty(is_file(public_path('uploads/csv/' . $row->sheet_short_name)))){
+                   $action = $csvDownload.' '.$view;
+                 }else{
+                    $action = $view;
+                 }
                 return $action;
                 })
                 ->editColumn('created_at',function($data){
