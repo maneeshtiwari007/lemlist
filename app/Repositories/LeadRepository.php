@@ -156,7 +156,12 @@ class LeadRepository extends BaseRepository
                     })->addIndexColumn()->toJson();
     }
     public function getAllSheetsWithDataTable(){
-        $sheets = Sheet::with('user')->orderBy('id','desc')->get();
+        $user = Auth::user();
+        if($user->role_id==2){
+            $sheets = Sheet::with('user')->where('uploaded_by',$user->id)->orderBy('id','desc')->get();
+        }else{
+            $sheets = Sheet::with('user')->orderBy('id','desc')->get();
+        }
         $table = new DataTables();
         return $table->of($sheets)
             ->addColumn('action', function ($row) {
