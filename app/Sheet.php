@@ -10,4 +10,7 @@ class Sheet extends Model{
 	public function user(){
         return $this->belongsTo(User::class,'uploaded_by','id');
     }
+    public function lead(){
+        return $this->hasMany(Lead::class);
+    }
 }

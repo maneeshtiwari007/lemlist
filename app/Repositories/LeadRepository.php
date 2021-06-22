@@ -158,12 +158,18 @@ class LeadRepository extends BaseRepository
     public function getAllSheetsWithDataTable(){
         $user = Auth::user();
         if($user->role_id==2){
-            $sheets = Sheet::with('user')->where('uploaded_by',$user->id)->orderBy('id','desc')->get();
+            $sheets = Sheet::with('user','lead')->where('uploaded_by',$user->id)->orderBy('id','desc')->get();
         }else{
-            $sheets = Sheet::with('user')->orderBy('id','desc')->get();
+            $sheets = Sheet::with('user','lead')->orderBy('id','desc')->get();
         }
+        //echo "<pre>";var_dump($sheets);exit;
         $table = new DataTables();
         return $table->of($sheets)
+        ->addColumn('totalLead', function ($row) {
+             $totalLeadPath = route('leads.list',['id'=>$row->id]);
+             $totalLead = '<a href="'.$totalLeadPath.'">'.$row->lead->count().'</a>';
+             return $totalLead;
+            })
             ->addColumn('action', function ($row) {
                 $viewPath = route('leads.list',['id'=>$row->id]);
                  $filePath = url('public/uploads/csv/'.$row->sheet_short_name);
@@ -179,13 +185,23 @@ class LeadRepository extends BaseRepository
                 })
                 ->editColumn('created_at',function($data){
                     return date("d M, Y H:i:s", strtotime($data->created_at));
-                })->addIndexColumn()
+                })
+                ->rawColumns(['totalLead','action'])
+                ->addIndexColumn()
             ->toJson();
     }
     public function getLeadsWithDataTable($id){
-        $lead = $this->_model->with('sheet')->where('uploaded_sheet_id',$id)->orderBy('id','desc')->get();
+        $lead = $this->_model->with('sheet')->where('sheet_id',$id)->orderBy('id','desc')->get();
         $table = new DataTables();
         return $table->of($lead)
+           ->addColumn('full_name', function ($row) {
+            $fullName = $row->first_name.' '.$row->last_name;
+            return $fullName;
+            })
+            ->addColumn('is_inserted_lemlist', function ($row) {
+                $is_inserted_lemlist = ($row->is_inserted_lemlist == 1) ? 'Yes' : 'No';
+                return $is_inserted_lemlist;
+                })
             ->addColumn('action', function ($row) {
                 $viewPath = route('leads.view',['id'=>$row->id]);
                 $view = '<a href="'.$viewPath.'" class="btn btn-sm btn-icon btn-light-success mr-2" title="View"><i class="la la-eye view"></i></a>';
@@ -204,6 +220,16 @@ class LeadRepository extends BaseRepository
     public function getSheetWithId($id){
         $sheet = Sheet::where('id',$id)->first();
         return $sheet;
+    }
+    public function getLatestSheets(){
+        $sheets = Sheet::orderBy('id', 'desc');
+        $sheets = $sheets->limit(5)->get();
+		return $sheets;
+    }
+    public function getLatestLeads(){
+        $leads = Lead::orderBy('id', 'desc');
+        $leads = $leads->limit(5)->get();
+		return $leads;
     }
 
    

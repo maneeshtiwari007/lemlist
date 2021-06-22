@@ -86,4 +86,9 @@ class CampaignRepository extends BaseRepository
             }
         }
     }
+    public function getLatestCompaign(){
+        $campaigns = $this->_model->where('is_delete', 0);
+        $campaigns = $campaigns->orderBy('id', 'desc')->limit(5)->get();
+		return $campaigns;
+    }
 }
