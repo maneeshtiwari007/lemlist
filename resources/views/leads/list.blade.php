@@ -94,8 +94,10 @@ Leads
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Campaign Id</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Full Name</th>
                                             <th scope="col">Company</th>
-                                            <th scope="col">Keyword</th>
+                                            <th scope="col">Lemlist Inserted</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
@@ -169,12 +171,14 @@ $('#exports-table').DataTable({
         order: [
                 [3, "desc"]
                 ],
-            columnDefs: [ { orderable: false, targets: [0,4] } ],
+            columnDefs: [ { orderable: false, targets: [0,6] } ],
         columns: [
             { data: 'DT_RowIndex', searchable: false },
             { data: 'campaign_id' },
-            { data: 'company' },
+            { data: 'email' },
+            { data: 'full_name' },
             { data: 'keyword' },
+            { data: 'is_inserted_lemlist' },
             { data: 'action' },
         ],
         searching: true,

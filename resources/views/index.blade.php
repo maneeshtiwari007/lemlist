@@ -3,7 +3,7 @@
 Dashboard
 @endsection
 @section('content')
- <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 <!--begin::Subheader-->
 <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
 	<div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
@@ -115,11 +115,11 @@ Dashboard
 		<div class="row">
 		<div class="col-12">
 				<!--begin::Mixed Widget 1-->
-					<h1 style="font-size: 70px;margin:15% auto 0 25%">Coming Soon</h1>
+				
 					<!--begin::Row-->
 							<div class="row m-0">
 							@if(Auth::user()->role_id == 1)
-								{{-- <div class="col bg-light-warning px-6 py-8 rounded-xl mr-7 mb-7">
+								<div class="col bg-light-warning px-3 py-8 rounded-xl mr-7 mb-7">
 									<div class="row d-flex justify-content-center align-items-center">
 									<div class="col pr-0">
 										<span class="svg-icon svg-icon-3x svg-icon-primary d-block">
@@ -133,21 +133,313 @@ Dashboard
 											</svg>										
 											<!--end::Svg Icon-->											
 										</span>
-										<a href="{{ route('users.index')}}" class="text-primary font-weight-bold font-size-h6 mt-2">Users</a>
+										<a href="{{ route('users.index') }}" class="text-primary font-weight-bold font-size-h6 mt-2">Users</a>
 									</div>
 									<div class="pl-0 col text-right">
-										<h6><strong>{{ $userCount }}</strong></h6>
+										<h6><strong>{{ !empty($userCount) ? $userCount : 0 }}</strong></h6>
 								     </div>
 									</div>
 									
-								</div> --}}
+								</div>
+								
 							@endif
+								<div class="col bg-light-danger px-3 py-8 rounded-xl mr-7 mb-7">
+									<div class="row d-flex justify-content-center align-items-center">
+									<div class="col pr-0">
+										<span class="svg-icon svg-icon-3x svg-icon-danger d-block">
+											<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Add-user.svg-->
+											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+													<polygon points="0 0 24 0 24 24 0 24" />
+													<path d="M12.9336061,16.072447 L19.36,10.9564761 L19.5181585,10.8312381 C20.1676248,10.3169571 20.2772143,9.3735535 19.7629333,8.72408713 C19.6917232,8.63415859 19.6104327,8.55269514 19.5206557,8.48129411 L12.9336854,3.24257445 C12.3871201,2.80788259 11.6128799,2.80788259 11.0663146,3.24257445 L4.47482784,8.48488609 C3.82645598,9.00054628 3.71887192,9.94418071 4.23453211,10.5925526 C4.30500305,10.6811601 4.38527899,10.7615046 4.47382636,10.8320511 L4.63,10.9564761 L11.0659024,16.0730648 C11.6126744,16.5077525 12.3871218,16.5074963 12.9336061,16.072447 Z" fill="#000000" fill-rule="nonzero" />
+													<path d="M11.0563554,18.6706981 L5.33593024,14.122919 C4.94553994,13.8125559 4.37746707,13.8774308 4.06710397,14.2678211 C4.06471678,14.2708238 4.06234874,14.2738418 4.06,14.2768747 L4.06,14.2768747 C3.75257288,14.6738539 3.82516916,15.244888 4.22214834,15.5523151 C4.22358765,15.5534297 4.2250303,15.55454 4.22647627,15.555646 L11.0872776,20.8031356 C11.6250734,21.2144692 12.371757,21.2145375 12.909628,20.8033023 L19.7677785,15.559828 C20.1693192,15.2528257 20.2459576,14.6784381 19.9389553,14.2768974 C19.9376429,14.2751809 19.9363245,14.2734691 19.935,14.2717619 L19.935,14.2717619 C19.6266937,13.8743807 19.0546209,13.8021712 18.6572397,14.1104775 C18.654352,14.112718 18.6514778,14.1149757 18.6486172,14.1172508 L12.9235044,18.6705218 C12.377022,19.1051477 11.6029199,19.1052208 11.0563554,18.6706981 Z" fill="#000000" opacity="0.3" />
+												</g>
+											</svg>									
+											<!--end::Svg Icon-->											
+										</span>
+										<a href="{{ route('campaigns.index') }}" class="text-danger font-weight-bold font-size-h6 mt-2">Compaigns</a>
+									</div>
+									<div class="pl-0 col text-right">
+										<h6><strong>{{ !empty($compaignCount) ? $compaignCount : 0 }}</strong></h6>
+								     </div>
+									</div>
+									
+								</div>
+								<div class="col bg-light-success px-3 py-8 rounded-xl mr-7 mb-7">
+									<div class="row d-flex justify-content-center align-items-center">
+									 <div class="col pr-0">
+										<span class="svg-icon svg-icon-3x svg-icon-success d-block my-2">
+											<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Urgent-mail.svg-->
+											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+													<rect x="0" y="0" width="24" height="24" />
+													<path d="M12.7037037,14 L15.6666667,10 L13.4444444,10 L13.4444444,6 L9,12 L11.2222222,12 L11.2222222,14 L6,14 C5.44771525,14 5,13.5522847 5,13 L5,3 C5,2.44771525 5.44771525,2 6,2 L18,2 C18.5522847,2 19,2.44771525 19,3 L19,13 C19,13.5522847 18.5522847,14 18,14 L12.7037037,14 Z" fill="#000000" opacity="0.3" />
+													<path d="M9.80428954,10.9142091 L9,12 L11.2222222,12 L11.2222222,16 L15.6666667,10 L15.4615385,10 L20.2072547,6.57253826 C20.4311176,6.4108595 20.7436609,6.46126971 20.9053396,6.68513259 C20.9668779,6.77033951 21,6.87277228 21,6.97787787 L21,17 C21,18.1045695 20.1045695,19 19,19 L5,19 C3.8954305,19 3,18.1045695 3,17 L3,6.97787787 C3,6.70173549 3.22385763,6.47787787 3.5,6.47787787 C3.60510559,6.47787787 3.70753836,6.51099993 3.79274528,6.57253826 L9.80428954,10.9142091 Z" fill="#000000" />
+												</g>
+											</svg>
+											<!--end::Svg Icon-->
+										</span>
+										<a href="{{ route('leads.uploaded-leads') }}" class="text-success font-weight-bold font-size-h6 mt-2">Sheets</a>
+									</div>
+									<div class="pl-0 col text-right">
+										<h6><strong>{{ !empty($sheetCount) ? $sheetCount : 0 }}</strong></h6>
+									 </div>
+									</div>
+							   </div>
+								
+								
+							   <div class="col bg-light-primary px-3 py-8 rounded-xl mr-7 mb-7">
+									<div class="row d-flex justify-content-center align-items-center">
+									 <div class="col pr-0">
+										<span class="svg-icon svg-icon-3x svg-icon-primary d-block my-2">
+											<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Urgent-mail.svg-->
+											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+													<rect x="0" y="0" width="24" height="24"></rect>
+													<rect fill="#000000" opacity="0.3" x="13" y="4" width="3" height="16" rx="1.5"></rect>
+													<rect fill="#000000" x="8" y="9" width="3" height="11" rx="1.5"></rect>
+													<rect fill="#000000" x="18" y="11" width="3" height="9" rx="1.5"></rect>
+													<rect fill="#000000" x="3" y="13" width="3" height="7" rx="1.5"></rect>
+												</g>
+											</svg>
+											<!--end::Svg Icon-->
+										</span>
+										<a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">Leads</a>
+									</div>
+									<div class="pl-0 col text-right">
+										<h6><strong>{{ !empty($leadCount) ? $leadCount : 0 }}</strong></h6>
+									 </div>
+									</div>
+							   </div>
+							   <div class="col bg-light-danger px-3 py-8 rounded-xl mr-7 mb-7">
+									<div class="row d-flex justify-content-center align-items-center">
+									 <div class="col pr-0">
+										<span class="svg-icon svg-icon-3x svg-icon-danger d-block my-2">
+											<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Urgent-mail.svg-->
+											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+													<rect x="0" y="0" width="24" height="24"></rect>
+													<rect fill="#000000" opacity="0.3" x="13" y="4" width="3" height="16" rx="1.5"></rect>
+													<rect fill="#000000" x="8" y="9" width="3" height="11" rx="1.5"></rect>
+													<rect fill="#000000" x="18" y="11" width="3" height="9" rx="1.5"></rect>
+													<rect fill="#000000" x="3" y="13" width="3" height="7" rx="1.5"></rect>
+												</g>
+											</svg>
+											<!--end::Svg Icon-->
+										</span>
+										<a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">Duplicate Leads</a>
+									</div>
+									<div class="pl-0 col text-right">
+										<h6><strong>{{ !empty($duplicateLeadCount) ? $duplicateLeadCount : 0 }}</strong></h6>
+									 </div>
+									</div>
+							   </div>
+								
 							</div>
 							<!--end::Row-->
 							
 			</div>
 		</div>
-		
+		<!--begin::Row-->
+		<div class="row">
+			<div class="col-xl-4 col-xxl-4">
+				<!--begin::Tiles Widget 1-->
+				<div class="card card-custom bg-white-100 card-stretch gutter-b">
+					<!--begin::Header-->
+					<div class="card-header border-0 pt-5">
+						<div class="card-title">
+							<div class="card-label">
+								<div class="font-weight-bolder">Latest Compaigns</div>
+								<div class="font-size-sm text-muted mt-2"> {{ !empty($compaignCount) ?$compaignCount : 0 }} Compaigns</div>
+							</div>
+						</div>
+						<div class="card-toolbar d-none">
+							<div class="dropdown dropdown-inline">
+								<a href="#" class="btn btn-clean btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="ki ki-bold-more-hor"></i>
+								</a>
+								<div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
+									<!--begin::Navigation-->
+									<ul class="navi navi-hover py-5">
+										<li class="navi-item">
+											<a href="#" class="navi-link">
+												<span class="navi-icon">
+													<i class="flaticon2-drop"></i>
+												</span>
+												<span class="navi-text">New Job</span>
+											</a>
+										</li>
+										
+									</ul>
+									<!--end::Navigation-->
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--end::Header-->
+					<!--begin::Body-->
+					<div class="card-body d-flex flex-column px-0">
+						<!--begin::Items-->
+						<div class="flex-grow-1 card-spacer-x">
+							@if(!empty($getLatestCompaign[0]))
+								@foreach($getLatestCompaign as $compaign)
+							      @php //$getUser = \app\User::where('id',$pro->created_by_user)->first(); @endphp
+							<!--begin::Item-->
+							<div class="d-flex align-items-center justify-content-between mb-10">
+								<div class="d-flex align-items-center mr-2">
+									<div>
+										<a href="{{ route('campaigns.index')}}" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">{{ $compaign->campaign_name }}</a>
+										<div class="font-size-sm text-muted font-weight-bold mt-1">
+											{{ (!empty($compaign->created_at)) ? date('d,M Y',strtotime($compaign->created_at)) : '-' }}
+										</div>
+									</div>
+								</div>
+								<div class="label label-light label-inline font-weight-bold text-dark-50 py-4 px-3 font-size-base d-none">
+									{{ $compaign->campaign_name }}</div>
+							</div>
+							<!--end::Item-->
+							@endforeach
+							@endif
+						</div>
+						<!--end::Items-->
+					</div>
+					<!--end::Body-->
+				</div>
+				<!--end::Tiles Widget 1-->
+			</div>
+			<div class="col-xl-4 col-xxl-4">
+				<!--begin::Tiles Widget 1-->
+				<div class="card card-custom bg-white-100 card-stretch gutter-b">
+					<!--begin::Header-->
+					<div class="card-header border-0 pt-5">
+						<div class="card-title">
+							<div class="card-label">
+								<div class="font-weight-bolder">Latest Sheets</div>
+								<div class="font-size-sm text-muted mt-2">{{ !empty($sheetCount) ? $sheetCount : 0 }} Sheets</div>
+							</div>
+						</div>
+						<div class="card-toolbar d-none">
+							<div class="dropdown dropdown-inline">
+								<a href="#" class="btn btn-clean btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="ki ki-bold-more-hor"></i>
+								</a>
+								<div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
+									<!--begin::Navigation-->
+									<ul class="navi navi-hover py-5">
+										<li class="navi-item">
+											<a href="#" class="navi-link">
+												<span class="navi-icon">
+													<i class="flaticon2-plus"></i>
+												</span>
+												<span class="navi-text">New Project</span>
+											</a>
+										</li>
+										
+									</ul>
+									<!--end::Navigation-->
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--end::Header-->
+					<!--begin::Body-->
+					<div class="card-body d-flex flex-column px-0">
+						<!--begin::Items-->
+						<div class="flex-grow-1 card-spacer-x">
+							@if(!empty($getLatestSheet[0]))
+								@foreach($getLatestSheet as $sheets)
+							    <!--begin::Item-->
+								<div class="d-flex align-items-center justify-content-between mb-10">
+									<div class="d-flex align-items-center mr-2">
+										<div>
+											<a href="{{ route('leads.uploaded-leads')}}" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">{{ (!empty($sheets->sheet_short_name)) ? $sheets->sheet_short_name : '-' }}</a>
+											<div class="font-size-sm text-muted font-weight-bold mt-1">{{$sheets->user->name }} </div>
+										</div>
+									</div>
+									<div class="label label-light label-inline font-weight-bold text-dark-50 py-4 px-3 font-size-base d-none">
+									   {{$sheets->user->name }} 
+									</div>
+									
+								</div>
+								<!--end::Item-->
+							@endforeach
+							@endif
+							
+						</div>
+						<!--end::Items-->
+					</div>
+					<!--end::Body-->
+				</div>
+				<!--end::Tiles Widget 1-->
+			</div>
+			<div class="col-xl-4 col-xxl-4">
+				<!--begin::Tiles Widget 1-->
+				<div class="card card-custom bg-white-100 card-stretch gutter-b">
+					<!--begin::Header-->
+					<div class="card-header border-0 pt-5">
+						<div class="card-title">
+							<div class="card-label">
+								<div class="font-weight-bolder">Latest Leads</div>
+								<div class="font-size-sm text-muted mt-2"> {{ !empty($leadCount) ? $leadCount : 0 }} Leads</div>
+							</div>
+						</div>
+						<div class="card-toolbar d-none">
+							<div class="dropdown dropdown-inline">
+								<a href="#" class="btn btn-clean btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="ki ki-bold-more-hor"></i>
+								</a>
+								<div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
+									<!--begin::Navigation-->
+									<ul class="navi navi-hover py-5">
+										<li class="navi-item">
+											<a href="#" class="navi-link">
+												<span class="navi-icon">
+													<i class="flaticon2-drop"></i>
+												</span>
+												<span class="navi-text">New Job</span>
+											</a>
+										</li>
+										
+									</ul>
+									<!--end::Navigation-->
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--end::Header-->
+					<!--begin::Body-->
+					<div class="card-body d-flex flex-column px-0">
+						<!--begin::Items-->
+						<div class="flex-grow-1 card-spacer-x">
+							@if(!empty($getLatestLeads[0]))
+								@foreach($getLatestLeads as $leads)
+							     <!--begin::Item-->
+							<div class="d-flex align-items-center justify-content-between mb-10">
+								<div class="d-flex align-items-center mr-2">
+									<div>
+										<a href="{{ route('leads.list',['id'=>$leads->sheet_id])}}" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">Lead( {{ $leads->campaign_id }} )</a>
+										<div class="font-size-sm text-muted font-weight-bold mt-1">
+										{{ $leads->email }} ({{ $leads->first_name. ' ' . $leads->last_name}})
+											</div>
+									</div><br>
+									
+								</div>
+								<div class="label label-light label-inline font-weight-bold text-dark-50 py-4 px-3 font-size-base d-none">
+									{{ $leads->first_name. ' ' . $leads->last_name}}</div>
+							</div>
+							<!--end::Item-->
+							@endforeach
+							@endif
+						</div>
+						<!--end::Items-->
+					</div>
+					<!--end::Body-->
+				</div>
+				<!--end::Tiles Widget 1-->
+			</div>
+			
+	</div>
+		<!--end::Row-->
 		
 		<!--end::Dashboard-->
 	</div>

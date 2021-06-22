@@ -90,6 +90,7 @@ Uploaded Leads
                                             <th scope="col">#</th>
                                             <th scope="col">Sheet Name</th>
                                             <th scope="col">Uploaded By</th>
+                                            <th scope="col">Total Lead</th>
                                             <th scope="col">Created Date</th>
                                             <th scope="col">Action</th>
                                         </tr>
@@ -162,13 +163,14 @@ $('#exports-table').DataTable({
         serverSide: true,
         ajax: "{{ route('leads.get-sheets') }}",
         order: [
-                [3, "desc"]
+                [4, "desc"]
                 ],
-            columnDefs: [ { orderable: false, targets: [0,4] } ],
+            columnDefs: [ { orderable: false, targets: [0,3,5] } ],
         columns: [
             { data: 'DT_RowIndex', searchable: false },
             { data: 'sheet_short_name' },
             { data: 'user.name' },
+            { data: 'totalLead' },
             { data: 'created_at' },
             { data: 'action' },
         ],

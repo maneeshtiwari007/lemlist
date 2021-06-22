@@ -147,7 +147,7 @@ Leads
 									<h3 class="card-label">Lead
 								</div>
 								<div class="card-toolbar">
-										<a href="{{ route('leads.list',['id'=>$arrLead->uploaded_sheet_id]) }}" class="btn btn-light-primary font-weight-bolder mr-2">
+										<a href="{{ route('leads.list',['id'=>$arrLead->sheet_id]) }}" class="btn btn-light-primary font-weight-bolder mr-2">
 										<i class="ki ki-long-arrow-back icon-xs"></i>Back</a>
 								 </div>
 								
@@ -219,7 +219,7 @@ Leads
 														</tr>
                                                         <tr>
 															<td><h6><span class="">Sheet Name</span></h6></td>
-															<td>{{ $arrLead->sheet->sheet_short_name }} </td>
+															<td>{{ !empty($arrLead->sheet->sheet_short_name) ? $arrLead->sheet->sheet_short_name : '' }} </td>
 														</tr>
 													</tbody>
 												</table>
