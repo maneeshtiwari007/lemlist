@@ -51184,7 +51184,7 @@ code {
 
 @media (min-width: 730px) {
   .daterangepicker.show-calendar .ranges {
-    height: 297px !important; } }
+    height: auto !important; } }
 
 @media (max-width: 767.98px) {
   .daterangepicker.show-calendar .ranges {

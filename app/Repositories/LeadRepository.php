@@ -231,6 +231,42 @@ class LeadRepository extends BaseRepository
         $leads = $leads->limit(5)->get();
 		return $leads;
     }
+	public function getLeadsWithSearchDataTable($userid="",$compaignId="",$fromDate="",$toDate=""){
+		$lead = $this->_model->with('sheet');
+		if(!empty($userid)){
+			$lead->where('uploaded_by',$userid);
+		}
+		if(!empty($compaignId)){
+			$lead->where('campaign_id',$compaignId);
+		}
+		if(!empty($fromDate) && !empty($toDate)){
+			 $lead->whereRaw("DATE_FORMAT(created_at, '%Y-%m-%d') >= ?", [$fromDate]);
+			 $lead->whereRaw("DATE_FORMAT(created_at, '%Y-%m-%d') <= ?", [$toDate]);
+			 //$lead->whereRaw("DATE_FORMAT(created_at, '%Y-%m-%d')", '>=',$fromDate);
+			 //$lead->whereRaw("DATE_FORMAT(created_at, '%Y-%m-%d')", '<=',$toDate);
+		}
+		$lead->orderBy('id','desc')->get();
+        $table = new DataTables();
+        return $table->of($lead)
+           ->addColumn('full_name', function ($row) {
+            $fullName = $row->first_name.' '.$row->last_name;
+            return $fullName;
+            })
+            ->addColumn('is_inserted_lemlist', function ($row) {
+                $is_inserted_lemlist = ($row->is_inserted_lemlist == 1) ? 'Yes' : 'No';
+                return $is_inserted_lemlist;
+                })
+            ->addColumn('action', function ($row) {
+                $viewPath = route('leads.view',['id'=>$row->id]);
+                $view = '<a href="'.$viewPath.'" class="btn btn-sm btn-icon btn-light-success mr-2" title="View"><i class="la la-eye view"></i></a>';
+                $action = $view;
+                return $action;
+                })
+                ->editColumn('created_at',function($data){
+                    return date("d M, Y H:i:s", strtotime($data->created_at));
+                })->addIndexColumn()
+            ->toJson();
+    }
 
    
 }
