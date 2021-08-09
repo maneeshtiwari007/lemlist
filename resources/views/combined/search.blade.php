@@ -30,9 +30,9 @@ Leads
             </div>
             <!--end::Info-->
             <!--begin::Toolbar-->
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center d-none">
                 <!--begin::Actions-->
-                <a href="{{ route('leads.upload-leads') }} " class="btn btn-dark font-weight-bolder btn-sm d-none">Upload Lead</a>
+                <a href="{{ route('combined.download-sheet')}} " class="btn btn-dark font-weight-bolder btn-sm d-none">Download CSV</a>
                 <!--end::Actions-->
             </div>
             <!--end::Toolbar-->
@@ -41,6 +41,11 @@ Leads
     <!--end::Subheader-->
     <!--begin::Entry-->
     <div class="d-flex flex-column-fluid">
+    @if(!empty($get['daterange']))
+    @php $getDateRange = $get['daterange'];@endphp
+    @else
+    @php $getDateRange = "";@endphp
+    @endif
         <!--begin::Container-->
         <div class="container">
             <div class="row">
@@ -51,9 +56,9 @@ Leads
                             <div class="card-title">
                                 <h3 class="card-label">Combined Sheet</h3>
                             </div>
-                            <div class="card-toolbar d-none">
-										<a href="{{ route('leads.uploaded-leads') }} " class="btn btn-light-primary font-weight-bolder mr-2">
-										<i class="ki ki-long-arrow-back icon-xs"></i>Download</a>
+                            <div class="card-toolbar">
+										<a href="{{ route('combined.download-sheet').'?user_id='.$userId.'&compaign_id='.$compaignId.'&daterange='.$getDateRange }} " class="btn btn-light-primary font-weight-bolder mr-2 download-sheet">
+										<i class="ki ki-long-arrow-back icon-xs d-none"></i>Download Csv</a>
 								 																		 								 
 								</div>
                             
@@ -89,11 +94,7 @@ Leads
                                     </div>
                                 @endif
 
-                                @if(!empty($get['daterange']))
-                                @php $getDateRange = $get['daterange'];@endphp
-                                @else
-                                @php $getDateRange = "";@endphp
-                                @endif
+                              
                         <form method="get" action="{{ route('combined.search') }}" id="search-form">
                             <div class="row">
                             <div class="col-3">
@@ -216,9 +217,9 @@ Leads
         var serviceUrl = "{{ route('combined.get-lead').'?userId='.$userId.'&compaignId='.$compaignId.'&fromArrayDate='.$fromArrayDate.'&toDate='.$toArrayDate }}";
         serviceUrl = serviceUrl.replace(/&amp;/gi, '&');
         $('#search-form').parsley();
-        $('#exports-table').DataTable({
+       var table =  $('#exports-table').DataTable({
                 dom: 'Bfrtip',
-                buttons: ['csv', 'excel'],
+                buttons: [],
                 processing: true,
                 serverSide: true,
                 ajax: serviceUrl,
@@ -236,8 +237,19 @@ Leads
                     { data: 'action' },
                 ],
                 searching: false,
+                "initComplete": function(settings, json) {
+                    var api = this.api();
+                    var numRows = api.rows( ).count();
+                    // Place the value in your HTML using jQuery, etc
+                    if(numRows==0){
+                        $('.download-sheet').addClass('d-none'); 
+                    }else{
+                        $('.download-sheet').removeClass('d-none');
+                    }
+                }
                 
             });
+            
         var date = new Date();
 		var currentMonth = date.getMonth();
 		var currentDate = date.getDate();

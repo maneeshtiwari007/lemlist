@@ -134,5 +134,38 @@ class SearchController extends Controller{
             return ($arrLeads);
         }
     }
+    public function getDownloadLeadList(Request $request){
+        $get = $request->input();
+       //echo "<pre>";var_dump($get);exit;
+        if(!empty($get['user_id'])){
+            $userId = $get['user_id'];
+        }else{
+            $userId = "";
+        }
+        if(!empty($get['compaign_id'])){
+           $compaignId = $get['compaign_id'];
+        }else{
+            $compaignId = "";
+        }
+        if(!empty($get['daterange'])){
+            $searchDateRange = explode('-',$get['daterange']);
+            $fromArray = str_replace(' ','',$searchDateRange[0]);
+            $fromArraySkip = explode('/',$fromArray);
+            $fromArrayDate = $fromArraySkip[2] . '-' . $fromArraySkip[0] . '-' . $fromArraySkip[1];
+            $toArray = str_replace(' ','',$searchDateRange[1]);
+            $toArraySkip = explode('/',$toArray);
+            $toArrayDate = $toArraySkip[2] . '-' . $toArraySkip[0] . '-' . $toArraySkip[1];
+            //var_dump($fromArrayDate);
+            //var_dump($toArrayDate);exit;
+            $fromDate = $fromArrayDate;
+            $toDate = $toArrayDate;
+          }else{
+            $fromDate = "";
+            $toDate = "";
+
+        }
+         $arrLeads = $this->objLeadRepositery->getLeadsWithDownloadCsv($userId,$compaignId,$fromDate,$toDate);
+         return response()->download($arrLeads);
+    }
 
 }
