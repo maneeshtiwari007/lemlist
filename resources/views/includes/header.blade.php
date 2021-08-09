@@ -42,6 +42,12 @@
 						<i class="menu-arrow"></i>
 					</a>
 				</li>
+				<li class="menu-item menu-item-submenu menu-item-rel menu-item-{{Request::is('combined*') ? 'active' : ''}}" data-menu-toggle="click" aria-haspopup="true">
+					<a href="{{ route('combined.search') }}" class="menu-link">
+						<span class="menu-text">Combined Sheet</span>
+						<i class="menu-arrow"></i>
+					</a>
+				</li>
 			</ul>
 			<!--end::Header Nav-->
 		</div>
