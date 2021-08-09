@@ -10,6 +10,8 @@ use App\Sheet;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
+use Rap2hpoutre\FastExcel\FastExcel;
+use Carbon\Carbon;
 
 class LeadRepository extends BaseRepository
 {
@@ -266,6 +268,57 @@ class LeadRepository extends BaseRepository
                     return date("d M, Y H:i:s", strtotime($data->created_at));
                 })->addIndexColumn()
             ->toJson();
+    }
+	public function getLeadsWithDownloadCsv($userid="",$compaignId="",$fromDate="",$toDate=""){
+		$mytime = Carbon::now();
+		$dateTimeData = $mytime->format('d-M-Y');
+        $fileName = 'download-combined-sheet-'.$dateTimeData.'-'.$this->getFileName(6,rand(0,100));
+		$lead = $this->_model->with('sheet');
+		if(!empty($userid)){
+			$lead->where('uploaded_by',$userid);
+		}
+		if(!empty($compaignId)){
+			$lead->where('campaign_id',$compaignId);
+		}
+		if(!empty($fromDate) && !empty($toDate)){
+			 $lead->whereRaw("DATE_FORMAT(created_at, '%Y-%m-%d') >= ?", [$fromDate]);
+			 $lead->whereRaw("DATE_FORMAT(created_at, '%Y-%m-%d') <= ?", [$toDate]);
+		}
+		$leads = $lead->orderBy('id','desc')->get();
+		if(!empty($leads[0])){
+			$i=1;
+			foreach($leads as $objLead){
+				$getAllSearchLeads[] = array(
+				                              '#'=>$i++,
+											  'Campaign Id'=>$objLead->campaign_id,
+											  'Email'=>$objLead->email,
+											  'Full Name'=>$objLead->first_name.' '.$objLead->last_name,
+											  'Company'=>$objLead->company,
+											  'Lemlist Inserted'=>($objLead->is_inserted_lemlist == 1) ? 'Yes' : 'No',
+											  );
+			}
+			$collectData = 	collect($getAllSearchLeads);
+				
+            if(!empty($getAllSearchLeads)){
+                return  (new FastExcel($collectData))->export(storage_path($fileName.'.csv'));
+            }
+		}
+	}
+	 /**
+     * will genrate unique file name for export excel or csv
+    */
+    private function getFileName($length, $seed){    
+
+        $name = "";
+        $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $codeAlphabet.= "0123456789";
+
+        mt_srand($seed);
+
+        for($i=0;$i<$length;$i++){
+            $name .= $codeAlphabet[mt_rand(0,strlen($codeAlphabet)-1)];
+        }
+        return $name;
     }
 
    
