@@ -57,7 +57,7 @@ Leads
                                 <h3 class="card-label">Combined Sheet</h3>
                             </div>
                             <div class="card-toolbar">
-										<a href="{{ route('combined.download-sheet').'?user_id='.$userId.'&compaign_id='.$compaignId.'&daterange='.$getDateRange }} " class="btn btn-light-primary font-weight-bolder mr-2 download-sheet">
+										<a href="javascript:;" data-href="{{ route('combined.download-sheet').'?user_id='.$userId.'&compaign_id='.$compaignId.'&daterange='.$getDateRange }} " class="btn btn-light-primary font-weight-bolder mr-2 download-sheet">
 										<i class="ki ki-long-arrow-back icon-xs d-none"></i>Download Csv</a>
 								 																		 								 
 								</div>
@@ -187,19 +187,22 @@ Leads
     </div>
 </div>
 
-<div id="error-modal" class="modal fade">
+<div id="download-error-modal" class="modal fade">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Action Confirmation</h4>
+                <h4 class="modal-title">Download Csv Confirmation</h4>
                 <button type="button" class="close" data-dismiss="modal">
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
             <div class="modal-body">
                 <p>
-                    Select at least one campaigns
+                   First select a sales person then search after that download csv file
                 </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -276,6 +279,16 @@ Leads
     $('input[name="daterange"]').on('cancel.daterangepicker', function(ev, picker) {
         $(this).val('');
     });
+    });
+    $("body").on("click",".download-sheet",function(){
+       var data_href=$(this).attr('data-href');
+       var sales_person = $('.select_user').val();
+        if(sales_person!=''){
+          $('.download-sheet').attr('href',data_href);
+       }else{
+         $('.download-sheet').attr('href','javascript:;');
+         $('#download-error-modal').modal('show', {backdrop:'static',keyboard:false}); 
+       }
     });
 
 </script>
