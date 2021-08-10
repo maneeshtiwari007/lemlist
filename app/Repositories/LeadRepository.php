@@ -233,22 +233,28 @@ class LeadRepository extends BaseRepository
         $leads = $leads->limit(5)->get();
 		return $leads;
     }
-	public function getLeadsWithSearchDataTable($userid="",$compaignId="",$fromDate="",$toDate=""){
+	public function getLeadsWithSearchDataTable($userId="",$compaignId="",$fromDate="",$toDate=""){
 		$lead = $this->_model->with('sheet');
-		if(!empty($userid)){
-			$lead->where('uploaded_by',$userid);
+		if(!empty($userId)){
+			$lead->where('uploaded_by',$userId);
+		}else{
+			$userId = "";
 		}
 		if(!empty($compaignId)){
 			$lead->where('campaign_id',$compaignId);
 		}
 		if(!empty($fromDate) && !empty($toDate)){
+			 $dateRange = date('m/d/Y',strtotime($fromDate)).'-'.date('m/d/Y',strtotime($toDate));
 			 $lead->whereRaw("DATE_FORMAT(created_at, '%Y-%m-%d') >= ?", [$fromDate]);
 			 $lead->whereRaw("DATE_FORMAT(created_at, '%Y-%m-%d') <= ?", [$toDate]);
 			 //$lead->whereRaw("DATE_FORMAT(created_at, '%Y-%m-%d')", '>=',$fromDate);
 			 //$lead->whereRaw("DATE_FORMAT(created_at, '%Y-%m-%d')", '<=',$toDate);
+		}else{
+			$dateRange = "";
 		}
 		$lead->orderBy('id','desc')->get();
-        $table = new DataTables();
+		$table = new DataTables();
+		//var_dump($userid);exit;
         return $table->of($lead)
            ->addColumn('full_name', function ($row) {
             $fullName = $row->first_name.' '.$row->last_name;
@@ -258,8 +264,8 @@ class LeadRepository extends BaseRepository
                 $is_inserted_lemlist = ($row->is_inserted_lemlist == 1) ? 'Yes' : 'No';
                 return $is_inserted_lemlist;
                 })
-            ->addColumn('action', function ($row) {
-                $viewPath = route('leads.view',['id'=>$row->id]);
+            ->addColumn('action', function ($row){
+				$viewPath = route('combined.view',['id'=>$row->id]);
                 $view = '<a href="'.$viewPath.'" class="btn btn-sm btn-icon btn-light-success mr-2" title="View"><i class="la la-eye view"></i></a>';
                 $action = $view;
                 return $action;
@@ -291,10 +297,16 @@ class LeadRepository extends BaseRepository
 				$getAllSearchLeads[] = array(
 				                              '#'=>$i++,
 											  'Campaign Id'=>$objLead->campaign_id,
-											  'Email'=>$objLead->email,
-											  'Full Name'=>$objLead->first_name.' '.$objLead->last_name,
 											  'Company'=>$objLead->company,
-											  'Lemlist Inserted'=>($objLead->is_inserted_lemlist == 1) ? 'Yes' : 'No',
+											  'Keyword'=>$objLead->keyword,
+											  'Url'=>$objLead->url,
+											  'Description'=>$objLead->description,
+											  'Description'=>$objLead->description,
+											  'Full Name'=>$objLead->first_name.' '.$objLead->last_name,
+											  'Email'=>$objLead->email,
+											  'Area Interest'=>$objLead->area_interest,
+											  'Source'=>$objLead->source,
+											  'Sdr'=>$objLead->sdr,
 											  );
 			}
 			$collectData = 	collect($getAllSearchLeads);

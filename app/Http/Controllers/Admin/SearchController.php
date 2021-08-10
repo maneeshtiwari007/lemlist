@@ -109,7 +109,6 @@ class SearchController extends Controller{
     public function getLeadList(Request $request){
         if ($request->ajax()){
             $get = $request->input();
-           // echo "<pre>";var_dump($get);exit;
             if(!empty($get['userId'])){
                 $userId = $get['userId'];
             }else{
@@ -167,5 +166,27 @@ class SearchController extends Controller{
          $arrLeads = $this->objLeadRepositery->getLeadsWithDownloadCsv($userId,$compaignId,$fromDate,$toDate);
          return response()->download($arrLeads);
     }
+    public function getCombinedLeadView(Request $request,$id,LeadRepository $objLeadRepository){
+      $get = $request->input();
+       //echo "<pre>";var_dump($get);exit;
+        if(!empty($get['user_id'])){
+            $userId = $get['user_id'];
+        }else{
+            $userId = "";
+        }
+        if(!empty($get['compaign_id'])){
+           $compaignId = $get['compaign_id'];
+        }else{
+            $compaignId = "";
+        }
+        if(!empty($get['daterange'])){
+            $dateRange = $get['daterange'];
+          }else{
+            $dateRange = "";
+            
+        }
+      $arrLead = $this->objLeadRepositery->getLeadsWithId($id);
+      return view('combined.view',['id'=>$id,'arrLead'=>$arrLead,'userId'=>$userId,'compaignId'=>$compaignId,'daterange'=>$dateRange]);
+  }
 
 }
