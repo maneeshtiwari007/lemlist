@@ -111,20 +111,20 @@ Leads
                                     </div>
 
                                 </div>
-                                <div class="col-3">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label id="exampleSelect1">Compaigns</label>
-                                            <select name="compaign_id" class="form-control select_compaign" id="exampleSelect1">
+                                            <select name="compaign_id" class="form-control select_compaign selectpicker" id="exampleSelect1" data-live-search="true">
                                                 <option value="">Select a compaign</option>
                                                 @if(!empty($objCampaigns[0]))
                                                     @foreach($objCampaigns as $comp)
-                                                    <option value="{{ $comp->campaign_id }}" {{ (!empty($get['compaign_id']) && ($get['compaign_id'] == $comp->campaign_id )) ? 'selected' : '' }}>{{ $comp->campaign_id }}</option>
+                                                    <option value="{{ $comp->campaign_id }}" {{ (!empty($get['compaign_id']) && ($get['compaign_id'] == $comp->campaign_id )) ? 'selected' : '' }}>{{ $comp->campaign_name }}</option>
                                                     @endforeach
                                                 @endif
                                             </select>
                                     </div>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-3">
                                 <label id="exampleSelect1">Select Date Range</label>
                                  <input type="text" class="form-control" name="daterange" id="daterange" placeholder="select date range"  value="{{ $getDateRange }}"/>
                                 </div>
