@@ -294,6 +294,15 @@
     background-color: #FFF;
     border: 1px solid #8950FC;
 }
+.loader-compaigns{
+	position: absolute;
+	top: 37px;
+	left: 15px;
+	display: block;
+	z-index: 1;
+	width: 100%;
+	background-color: #fff;
+}
 
 #kt_header, #kt_header_mobile, #kt_header_menu_wrapper{
     background: #5400ff !important;

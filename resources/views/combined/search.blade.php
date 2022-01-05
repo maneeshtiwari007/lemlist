@@ -46,6 +46,13 @@ Leads
     @else
     @php $getDateRange = "";@endphp
     @endif
+	@if(!empty($get['compaign_id']))
+		@foreach($get['compaign_id'] as $compaign)
+	     @php $arrCompaign[] = $compaign; @endphp
+	    @endforeach
+	@else
+		@php $arrCompaign = array();@endphp
+	@endif
         <!--begin::Container-->
         <div class="container">
             <div class="row">
@@ -96,11 +103,13 @@ Leads
 
                               
                         <form method="get" action="{{ route('combined.search') }}" id="search-form">
-                            <div class="row">
+                            
+							<div class="row">
+							
                             <div class="col-3">
                                 <div class="form-group">
-                                        <label id="exampleSelect1">Sales Person<span class="text-danger">*</span></label>
-                                            <select name="user_id" class="form-control select_user" id="exampleSelect1" data-parsley-error-message="Please select user" required>
+                                        <label id="exampleSelect1">Sales Person</label>
+                                            <select name="user_id" class="form-control select_user selectpicker" id="sales_person" data-parsley-error-message="Please select user" data-live-search="true">
                                                 <option value="">Select a sales person</option>
                                                 @if(!empty($objUsers['data'][0]))
                                                     @foreach($objUsers['data'] as $user)
@@ -112,13 +121,14 @@ Leads
 
                                 </div>
                                 <div class="col-4">
-                                    <div class="form-group">
+                                    <div class="form-group position-relative">
+									    <span class="loader-compaigns text-muted d-none">Loading...</span>
                                         <label id="exampleSelect1">Compaigns</label>
-                                            <select name="compaign_id" class="form-control select_compaign selectpicker" id="exampleSelect1" data-live-search="true">
+                                            <select name="compaign_id[]" class="form-control select_compaign select2" id="user_campaigns" multiple>
                                                 <option value="">Select a compaign</option>
                                                 @if(!empty($objCampaigns[0]))
                                                     @foreach($objCampaigns as $comp)
-                                                    <option value="{{ $comp->campaign_id }}" {{ (!empty($get['compaign_id']) && ($get['compaign_id'] == $comp->campaign_id )) ? 'selected' : '' }}>{{ $comp->campaign_name }}</option>
+                                                    <option value="{{ $comp->campaign_id }}" {{ (!empty($arrCompaign) && in_array($comp->campaign_id,$arrCompaign)) ? 'selected' : '' }}>{{ $comp->campaign_name }}</option>
                                                     @endforeach
                                                 @endif
                                             </select>
@@ -140,10 +150,10 @@ Leads
                                <strong>Lead Count :</strong>
                                 {{ $leadCount }}
                             </div>
-                            <div class="col-3">
+                            {{-- <div class="col-3">
                                <strong>Sheet Count :</strong>
                                {{ $sheetCount }}
-                            </div>
+                            </div> --}}
                                 
                            
                             </div>
@@ -156,8 +166,7 @@ Leads
                                             <th scope="col">Campaign Name</th>
                                             <th scope="col">Email</th>
                                             <th scope="col">Full Name</th>
-                                            <th scope="col">Company</th>
-                                            <th scope="col">Lemlist Inserted</th>
+                                            <th scope="col">Created At</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
@@ -225,12 +234,16 @@ Leads
 <!-- End Remove Modal -->
 @endsection
 @section('script')
+<script type="text/javascript" src="{{ url('public/admin')}}/assets/js/pages/crud/forms/widgets/select2.js"></script>
 <script type="text/javascript" src="{{ url('public/admin')}}/assets/vendors/js/datepicker/latest/moment.min.js"></script>
 <script type="text/javascript" src="{{ url('public/admin')}}/assets/vendors/js/datepicker/latest/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css" href="{{ url('public/admin')}}/assets/vendors/css/datepicker/latest/daterangepicker.css" />
 <script>
     $(function() {
-        var serviceUrl = "{{ route('combined.get-lead').'?userId='.$userId.'&compaignId='.$compaignId.'&fromArrayDate='.$fromArrayDate.'&toDate='.$toArrayDate }}";
+		$('#user_campaigns').select2({
+         placeholder: "Select Compaigns",
+        });
+		var serviceUrl = "{{ route('combined.get-lead').'?userId='.$userId.'&compaignId='.$compaignId.'&fromArrayDate='.$fromArrayDate.'&toDate='.$toArrayDate }}";
         serviceUrl = serviceUrl.replace(/&amp;/gi, '&');
         $('#search-form').parsley();
        var table =  $('#exports-table').DataTable({
@@ -239,18 +252,18 @@ Leads
                 processing: true,
                 serverSide: true,
                 ajax: serviceUrl,
+                pageLength: 25,
                 order: [
                         [3, "desc"]
                         ],
-                    columnDefs: [ { orderable: false, targets: [0,6] } ],
+                    columnDefs: [ { orderable: false, targets: [0] } ],
                 columns: [
                     { data: 'DT_RowIndex', searchable: false },
                     { data: 'compaign.campaign_name' },
                     { data: 'email' },
                     { data: 'full_name' },
-                    { data: 'keyword' },
-                    { data: 'is_inserted_lemlist' },
-                    { data: 'action' },
+                    { data: 'created_at' },
+					{ data: 'action' },
                 ],
                 searching: false,
                 "initComplete": function(settings, json) {
@@ -279,7 +292,7 @@ Leads
             locale: {
                 cancelLabel: 'Clear'
             },
-            minDate: new Date(currentYear, currentMonth-3, currentDate),
+            //minDate: new Date(currentYear, currentMonth-3, currentDate),
 			maxDate: new Date(currentYear, currentMonth, currentDate)
  
         }, function(start, end, label) {
@@ -295,14 +308,35 @@ Leads
     });
     $("body").on("click",".download-sheet",function(){
        var data_href=$(this).attr('data-href');
-       var sales_person = $('.select_user').val();
-        if(sales_person!=''){
-          $('.download-sheet').attr('href',data_href);
-       }else{
-         $('.download-sheet').attr('href','javascript:;');
-         $('#download-error-modal').modal('show', {backdrop:'static',keyboard:false}); 
-       }
+	   var sales_person = $('#sales_person').val();
+       $('.download-sheet').attr('href',data_href);
+    //    if(sales_person!=''){ alert(data_href);
+    //       $('.download-sheet').attr('href',data_href);
+    //    }else{
+    //      $('.download-sheet').attr('href','javascript:;');
+    //      $('#download-error-modal').modal('show', {backdrop:'static',keyboard:false}); 
+    //    }
     });
+
+    // fetch the campaigns based on the user selection
+    $("body").on("change","#sales_person",function(){
+        var $this = $(this);
+		 $('.loader-compaigns').removeClass('d-none');
+		 $.ajax({
+                url: "{{route('combined.get-user-campaigns')}}",
+                type:"json",
+                method:"Post",
+                data:{
+                    user_id:$this.val()
+                },
+                success:function(responseData){ 
+				   $('.loader-compaigns').addClass('d-none');
+                   $('#user_campaigns').html(responseData.options);
+                   $('#user_campaigns').select2('refresh');
+                }  
+           });
+    });
+	
 
 </script>
 @endsection

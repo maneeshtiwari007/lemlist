@@ -11,6 +11,7 @@ use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
 use Rap2hpoutre\FastExcel\FastExcel;
+ini_set('memory_limit', '-1');
 use Carbon\Carbon;
 
 class LeadRepository extends BaseRepository
@@ -172,6 +173,16 @@ class LeadRepository extends BaseRepository
              $totalLead = '<a href="'.$totalLeadPath.'">'.$row->lead->count().'</a>';
              return $totalLead;
             })
+			->addColumn('duplicateLead', function ($row) {
+                $duplicatePath = route('leads.list',['id'=>$row->id]);
+                $duplicates = DB::table('tbl_leads')
+						->select(DB::raw('COUNT(*) as `count`'))
+						->where('sheet_id',$row->id)
+						->where('is_inserted_lemlist',0)
+						->get();
+			 $duplicateLead = !empty($duplicates[0]) ? '<a href="'.$duplicatePath.'">'.($duplicates[0]->count.'</a>') : 0;
+			 return $duplicateLead;
+            })
             ->addColumn('action', function ($row) {
                 $viewPath = route('leads.list',['id'=>$row->id]);
                  $filePath = url('public/uploads/csv/'.$row->sheet_short_name);
@@ -188,7 +199,7 @@ class LeadRepository extends BaseRepository
                 ->editColumn('created_at',function($data){
                     return date("d M, Y H:i:s", strtotime($data->created_at));
                 })
-                ->rawColumns(['totalLead','action'])
+                ->rawColumns(['totalLead','duplicateLead','action'])
                 ->addIndexColumn()
             ->toJson();
     }
@@ -241,7 +252,7 @@ class LeadRepository extends BaseRepository
 			$userId = "";
 		}
 		if(!empty($compaignId)){
-			$lead->where('campaign_id',$compaignId);
+			$lead->whereIn('campaign_id',$compaignId);
 		}
 		if(!empty($fromDate) && !empty($toDate)){
 			 $dateRange = date('m/d/Y',strtotime($fromDate)).'-'.date('m/d/Y',strtotime($toDate));
@@ -284,7 +295,7 @@ class LeadRepository extends BaseRepository
 			$lead->where('uploaded_by',$userid);
 		}
 		if(!empty($compaignId)){
-			$lead->where('campaign_id',$compaignId);
+			$lead->whereIn('campaign_id',$compaignId);
 		}
 		if(!empty($fromDate) && !empty($toDate)){
 			 $lead->whereRaw("DATE_FORMAT(created_at, '%Y-%m-%d') >= ?", [$fromDate]);
@@ -322,7 +333,8 @@ class LeadRepository extends BaseRepository
 		   $lead = $lead->where('uploaded_by',$userid);
 		}
 		if(!empty($compaignId)){
-		   $lead = $lead->where('campaign_id',$compaignId);
+		   $explodeCompaign = explode(',',$compaignId);
+		   $lead = $lead->whereIn('campaign_id',$explodeCompaign);
 		}
 		if(!empty($fromDate) && !empty($toDate)){
 			$lead = $lead->whereRaw("DATE_FORMAT(created_at, '%Y-%m-%d') >= ?", [$fromDate]);

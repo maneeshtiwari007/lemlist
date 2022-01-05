@@ -60,7 +60,21 @@ Route::post('forgot-password/{token}', 'AuthController@forgotPostPassword')->nam
 
     Route::get('/logout', 'AuthController@logout')->name('logout')->middleware('auth');
 
+    // routes for scripts and hooks
+    Route::get('script-emailsent', 'Script\ScriptController@emailSent')->name('script-emailsent');
+    Route::get('script-emailbounce', 'Script\ScriptController@emailbounce')->name('emailbounce');
+    Route::get('script-emailunsubscribe', 'Script\ScriptController@emailunsubscribe')->name('emailunsubscribe');
 
+    Route::get('list-lemlist-webhooks', 'Script\ScriptController@listLemlistWebhooks')->name('list-lemlist-webhooks');
+    Route::get('create-lemlist-webhooks', 'Script\ScriptController@createLemlistWebhooks')->name('reate-lemlist-webhooks');
+
+    Route::post('process-webhooks', 'Script\ScriptController@processWebhooks')->name('process-webhooks');
+
+    Route::prefix('webhooks')->name('webhooks.')->group(static function() {
+        Route::post('/email-bounce', 'Script\ScriptController@processBounceWebhooks')->name('email-bounce');
+        Route::post('/email-unsubscribe', 'Script\ScriptController@processUnsubscribeWebhooks')->name('email-unsubscribe');
+        Route::post('/email-sent', 'Script\ScriptController@processEmailSentWebhooks')->name('email-sent');
+    });
 
     Route::prefix('users')->middleware('auth')->name('users.')->group(static function() {
 
@@ -97,7 +111,7 @@ Route::post('forgot-password/{token}', 'AuthController@forgotPostPassword')->nam
         Route::post('/add', 'AdminManagementController@addPost')->name('add.post');
 
         
-
+ 
     });
 
 	Route::prefix('/campaigns')->middleware('auth')->name('campaigns.')->group(static function() {
@@ -109,7 +123,8 @@ Route::post('forgot-password/{token}', 'AuthController@forgotPostPassword')->nam
         Route::get('/get-campaigns', 'Admin\CampaignController@get_campaigns')->name('get-campaigns');
 
         Route::post('/delete-campaigns', 'Admin\CampaignController@delete_campaigns')->name('delete-campaigns');
-
+        Route::post('/reporting-type-campaigns', 'Admin\CampaignController@reporting_type_campaigns')->name('reporting-type-campaigns');
+        Route::post('/lead-destribution-campaigns', 'Admin\CampaignController@lead_destribution_campaigns')->name('lead-destribution-campaigns');
     });
 
 	Route::prefix('/leads')->middleware('auth')->name('leads.')->group(static function() {
@@ -141,4 +156,5 @@ Route::post('forgot-password/{token}', 'AuthController@forgotPostPassword')->nam
         Route::get('/get-lead', 'Admin\SearchController@getLeadList')->name('get-lead');
         Route::get('/download-sheet', 'Admin\SearchController@getDownloadLeadList')->name('download-sheet');
         Route::get('/view/{id}', 'Admin\SearchController@getCombinedLeadView')->name('view');
+        Route::post('/get-user-campaigns', 'Admin\SearchController@getUserCampaigns')->name('get-user-campaigns');
     });
