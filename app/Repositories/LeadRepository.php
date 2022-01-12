@@ -46,12 +46,17 @@ class LeadRepository extends BaseRepository
         $arrCampaignsData=[];
         $totalCampaignsSelected = count($all_campaigns);
         $totalActualLeads = count($data)-1;
-        //echo "<pre>";var_dump($data);exit;
-        if($totalActualLeads <= $totalCampaignsSelected){
-            foreach($all_campaigns as $key=>$val){
-                if(!empty($data[$key+1])){
-                    $csvRow = $data[$key+1];
+        //echo "<pre>";var_dump($all_campaigns);exit;
+        $arrChunckData = array_chunk($data,10);
+        $e=0;
+        foreach($arrChunckData as $key=>$checkData){
+            if($e == $totalCampaignsSelected){
+                $e=0;
+            }
+            if(!empty($all_campaigns[$e])){
+                foreach($checkData as $csvRow){
                     $varEmail = $csvRow[6];
+                    // data to post on lemlist
                     $arrPostData = [
                         'companyName'=>$csvRow[0],
                         'Keyword'=>$csvRow[1],
@@ -63,15 +68,14 @@ class LeadRepository extends BaseRepository
                         'Source'=>$csvRow[8],
                         'SDR'=>$csvRow[9],
                     ];
-                    //$jsonData = $objLemlistApi->callApiWithData($arrPostData,"{$val}/leads/{$varEmail}?deduplicate=true");
-                    //var_dump($jsonData);
+                    $jsonData = $objLemlistApi->callApiWithData($arrPostData,"{$all_campaigns[$e]}/leads/{$varEmail}?deduplicate=true");
                     $is_inserted_lemlist = !empty($jsonData) ? 1 : 0;
                     $attributes = [
-                        'campaign_id'=>$val,
+                        'campaign_id'=>$all_campaigns[$e],
                         'company'=>$csvRow[0],
                         'keyword'=>$csvRow[1],
                         'url'=>$csvRow[2],
-                        'description'=>$csvRow[3],
+                        'description'=>preg_replace('/[^A-Za-z0-9\-]/', '', $csvRow[3]),
                         'first_name'=>$csvRow[4],
                         'last_name'=>$csvRow[5],
                         'email'=>$varEmail,
@@ -80,66 +84,107 @@ class LeadRepository extends BaseRepository
                         'sdr'=>$csvRow[9],
                         'uploaded_by'=>Auth::id(),
                         'is_inserted_lemlist'=>$is_inserted_lemlist,
-                        'uploaded_sheet_id'=>$insertSheet->id
+                        'sheet_id'=>$insertSheet->id
                     ];
-                    
+                    $this->_model->create($attributes);
                 }
             }
-        }else{
-            //echo "leads-".$totalActualLeads."<br>campaigns-".$totalCampaignsSelected."<br>";
-            $dataCountToeachCampaign = ceil($totalActualLeads/$totalCampaignsSelected);
-            //echo $dataCountToeachCampaign;
-            $counter = 1;
-            foreach($all_campaigns as $key=>$val){
-                for($i=0;$i<$dataCountToeachCampaign;$i++){
-                    // checks if reaches to end of the csv record
-                    if($counter > $totalActualLeads){break;}
-                    // chcek if that node exists
-                    if(!empty($data[$counter])){
-                        $csvRow = $data[$counter];
-                        $varEmail = $csvRow[6];
-
-                        // data to post on lemlist
-                        $arrPostData = [
-                            'companyName'=>$csvRow[0],
-                            'Keyword'=>$csvRow[1],
-                            'URL'=>$csvRow[2],
-                            'Outreach Description'=>$csvRow[3],
-                            'firstName'=>$csvRow[4],
-                            'lastName'=>$csvRow[5],
-                            'Area of interest'=>$csvRow[7],
-                            'Source'=>$csvRow[8],
-                            'SDR'=>$csvRow[9],
-                        ];
-
-                        //$jsonData = $objLemlistApi->callApiWithData($arrPostData,"{$val}/leads/{$varEmail}?deduplicate=true");
-                        //var_dump($jsonData);
-                        $is_inserted_lemlist = !empty($jsonData) ? 1 : 0;
-                        $attributes = [
-                            'campaign_id'=>$val,
-                            'company'=>$csvRow[0],
-                            'keyword'=>$csvRow[1],
-                            'url'=>$csvRow[2],
-                            'description'=>$csvRow[3],
-                            'first_name'=>$csvRow[4],
-                            'last_name'=>$csvRow[5],
-                            'email'=>$varEmail,
-                            'area_interest'=>$csvRow[7],
-                            'source'=>$csvRow[8],
-                            'sdr'=>$csvRow[9],
-                            'uploaded_by'=>Auth::id(),
-                            'is_inserted_lemlist'=>$is_inserted_lemlist,
-                            'uploaded_sheet_id'=>$insertSheet->id
-                        ];
-                        $this->_model->create($attributes);
-
-                        $counter++;
-                    }
-                }
-
-            }
-            //exit;
+            $e=$e+1;
         }
+		//exit;
+        // if($totalActualLeads <= $totalCampaignsSelected){
+        //     foreach($all_campaigns as $key=>$val){
+        //         if(!empty($data[$key+1])){
+        //             $csvRow = $data[$key+1];
+        //             $varEmail = $csvRow[6];
+        //             $arrPostData = [
+        //                 'companyName'=>$csvRow[0],
+        //                 'Keyword'=>$csvRow[1],
+        //                 'URL'=>$csvRow[2],
+        //                 'Outreach Description'=>$csvRow[3],
+        //                 'firstName'=>$csvRow[4],
+        //                 'lastName'=>$csvRow[5],
+        //                 'Area of interest'=>$csvRow[7],
+        //                 'Source'=>$csvRow[8],
+        //                 'SDR'=>$csvRow[9],
+        //             ];
+        //             $jsonData = $objLemlistApi->callApiWithData($arrPostData,"{$val}/leads/{$varEmail}?deduplicate=true");
+        //             //var_dump($jsonData);
+        //             $is_inserted_lemlist = !empty($jsonData) ? 1 : 0;
+        //             $attributes = [
+        //                 'campaign_id'=>$val,
+        //                 'company'=>$csvRow[0],
+        //                 'keyword'=>$csvRow[1],
+        //                 'url'=>$csvRow[2],
+        //                 'description'=>$csvRow[3],
+        //                 'first_name'=>$csvRow[4],
+        //                 'last_name'=>$csvRow[5],
+        //                 'email'=>$varEmail,
+        //                 'area_interest'=>$csvRow[7],
+        //                 'source'=>$csvRow[8],
+        //                 'sdr'=>$csvRow[9],
+        //                 'uploaded_by'=>Auth::id(),
+        //                 'is_inserted_lemlist'=>$is_inserted_lemlist,
+        //                 'sheet_id'=>$insertSheet->id
+        //             ];
+                    
+        //         }
+        //     }
+        // }else{
+        //     //echo "leads-".$totalActualLeads."<br>campaigns-".$totalCampaignsSelected."<br>";
+        //     $dataCountToeachCampaign = ceil($totalActualLeads/$totalCampaignsSelected);
+        //     //echo $dataCountToeachCampaign;
+        //     $counter = 1;
+        //     foreach($all_campaigns as $key=>$val){
+        //         for($i=0;$i<$dataCountToeachCampaign;$i++){
+        //             // checks if reaches to end of the csv record
+        //             if($counter > $totalActualLeads){break;}
+        //             // chcek if that node exists
+        //             if(!empty($data[$counter])){
+        //                 $csvRow = $data[$counter];
+        //                 $varEmail = $csvRow[6];
+
+        //                 // data to post on lemlist
+        //                 $arrPostData = [
+        //                     'companyName'=>$csvRow[0],
+        //                     'Keyword'=>$csvRow[1],
+        //                     'URL'=>$csvRow[2],
+        //                     'Outreach Description'=>$csvRow[3],
+        //                     'firstName'=>$csvRow[4],
+        //                     'lastName'=>$csvRow[5],
+        //                     'Area of interest'=>$csvRow[7],
+        //                     'Source'=>$csvRow[8],
+        //                     'SDR'=>$csvRow[9],
+        //                 ];
+
+        //                 $jsonData = $objLemlistApi->callApiWithData($arrPostData,"{$val}/leads/{$varEmail}?deduplicate=true");
+        //                 //var_dump($jsonData);
+        //                 $is_inserted_lemlist = !empty($jsonData) ? 1 : 0;
+        //                 $attributes = [
+        //                     'campaign_id'=>$val,
+        //                     'company'=>$csvRow[0],
+        //                     'keyword'=>$csvRow[1],
+        //                     'url'=>$csvRow[2],
+        //                     'description'=>$csvRow[3],
+        //                     'first_name'=>$csvRow[4],
+        //                     'last_name'=>$csvRow[5],
+        //                     'email'=>$varEmail,
+        //                     'area_interest'=>$csvRow[7],
+        //                     'source'=>$csvRow[8],
+        //                     'sdr'=>$csvRow[9],
+        //                     'uploaded_by'=>Auth::id(),
+        //                     'is_inserted_lemlist'=>$is_inserted_lemlist,
+        //                     'sheet_id'=>$insertSheet->id
+        //                 ];
+        //                 $this->_model->create($attributes);
+
+        //                 $counter++;
+        //             }
+        //         }
+
+        //     }
+        //     //exit;
+        // }
         //unlink(public_path('uploads/csv/'.$file_name));
     }
 
@@ -173,16 +218,16 @@ class LeadRepository extends BaseRepository
              $totalLead = '<a href="'.$totalLeadPath.'">'.$row->lead->count().'</a>';
              return $totalLead;
             })
-			->addColumn('duplicateLead', function ($row) {
-                $duplicatePath = route('leads.list',['id'=>$row->id]);
-                $duplicates = DB::table('tbl_leads')
-						->select(DB::raw('COUNT(*) as `count`'))
-						->where('sheet_id',$row->id)
-						->where('is_inserted_lemlist',0)
-						->get();
-			 $duplicateLead = !empty($duplicates[0]) ? '<a href="'.$duplicatePath.'">'.($duplicates[0]->count.'</a>') : 0;
-			 return $duplicateLead;
-            })
+			// ->addColumn('duplicateLead', function ($row) {
+                // $duplicatePath = route('leads.list',['id'=>$row->id]);
+                // $duplicates = DB::table('tbl_leads')
+						// ->select(DB::raw('COUNT(*) as `count`'))
+						// ->where('sheet_id',$row->id)
+						// ->where('is_inserted_lemlist',0)
+						// ->get();
+			 // $duplicateLead = !empty($duplicates[0]) ? '<a href="'.$duplicatePath.'">'.($duplicates[0]->count.'</a>') : 0;
+			 // return $duplicateLead;
+            // })
             ->addColumn('action', function ($row) {
                 $viewPath = route('leads.list',['id'=>$row->id]);
                  $filePath = url('public/uploads/csv/'.$row->sheet_short_name);
@@ -199,7 +244,7 @@ class LeadRepository extends BaseRepository
                 ->editColumn('created_at',function($data){
                     return date("d M, Y H:i:s", strtotime($data->created_at));
                 })
-                ->rawColumns(['totalLead','duplicateLead','action'])
+                ->rawColumns(['totalLead','action'])
                 ->addIndexColumn()
             ->toJson();
     }

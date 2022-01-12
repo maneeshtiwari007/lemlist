@@ -166,13 +166,12 @@ $('#exports-table').DataTable({
         order: [
                 [5, "desc"]
                 ],
-            columnDefs: [ { orderable: false, targets: [0,3,4,6] } ],
+            columnDefs: [ { orderable: false, targets: [0,3,4,5] } ],
         columns: [
             { data: 'DT_RowIndex', searchable: false },
             { data: 'sheet_short_name' },
             { data: 'user.name' },
             { data: 'totalLead' },
-            { data: 'duplicateLead'},
             { data: 'created_at' },
             { data: 'action' },
         ],

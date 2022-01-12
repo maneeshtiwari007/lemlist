@@ -47,9 +47,13 @@ Leads
     @php $getDateRange = "";@endphp
     @endif
 	@if(!empty($get['compaign_id']))
-		@foreach($get['compaign_id'] as $compaign)
-	     @php $arrCompaign[] = $compaign; @endphp
-	    @endforeach
+		@if($get['compaign_id'] == 'All')
+			@php $arrCompaign = $get['compaign_id']; @endphp
+		@else
+			@foreach($get['compaign_id'] as $compaign)
+			 @php $arrCompaign[] = $compaign; @endphp
+			@endforeach
+		@endif
 	@else
 		@php $arrCompaign = array();@endphp
 	@endif
@@ -124,9 +128,8 @@ Leads
                                     <div class="form-group position-relative">
 									    <span class="loader-compaigns text-muted d-none">Loading...</span>
                                         <label id="exampleSelect1">Compaigns</label>
-                                            <select name="compaign_id[]" class="form-control select_compaign select2" id="user_campaigns" multiple>
-                                                <option value="">Select a compaign</option>
-                                                @if(!empty($objCampaigns[0]))
+										    <select name="compaign_id[]" class="form-control select_compaign select2" id="user_campaigns" multiple>
+                                              @if(!empty($objCampaigns[0]))
                                                     @foreach($objCampaigns as $comp)
                                                     <option value="{{ $comp->campaign_id }}" {{ (!empty($arrCompaign) && in_array($comp->campaign_id,$arrCompaign)) ? 'selected' : '' }}>{{ $comp->campaign_name }}</option>
                                                     @endforeach
@@ -243,6 +246,31 @@ Leads
 		$('#user_campaigns').select2({
          placeholder: "Select Compaigns",
         });
+		<?php if(!empty($get['compaign_id'])){?>
+			var compaignVal = <?php echo json_encode($get['compaign_id']); ?>;
+		<?php }else{?>
+		    var compaignVal = "";
+		<?php }?>
+		$("#user_campaigns option").prop('disabled', false);
+		var user_id = $('#sales_person').val();
+		if(user_id !=""){
+			$.ajax({
+					url: "{{route('combined.get-user-campaigns')}}",
+					type:"json",
+					method:"Post",
+					data:{
+						user_id:user_id,
+						compaignVal:compaignVal
+					},
+					success:function(responseData){ 
+					   $('.loader-compaigns').addClass('d-none');
+					   $('#user_campaigns').html(responseData.options);
+					   $('#user_campaigns').select2('refresh');
+					   //$("#user_campaigns option").prop('disabled', false);
+					}  
+			   });
+		}
+		
 		var serviceUrl = "{{ route('combined.get-lead').'?userId='.$userId.'&compaignId='.$compaignId.'&fromArrayDate='.$fromArrayDate.'&toDate='.$toArrayDate }}";
         serviceUrl = serviceUrl.replace(/&amp;/gi, '&');
         $('#search-form').parsley();
@@ -336,6 +364,17 @@ Leads
                 }  
            });
     });
+	$("body").on("change","#user_campaigns",function(){
+        var $this = $(this);
+		if($this.val()=='All'){
+			$("#user_campaigns option").not(':nth-child(1)').prop('disabled', true);	
+		}else{
+			//$("#user_campaigns option").prop('disabled', false);
+		}
+    });
+	
+	
+	
 	
 
 </script>

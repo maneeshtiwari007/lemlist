@@ -60,10 +60,31 @@ class SearchController extends Controller
     }
     
     if (!empty($get['compaign_id'])) {
-      $arrData['compaignId'] = implode(',',$get['compaign_id']);
+		if($get['compaign_id'][0] == 'All'){
+			if(!empty($get['user_id'])){
+			  $objCamp = $this->objCampaignRepositery->getUserCampaigns($get['user_id']);
+			  if(!empty($objCamp[0])){
+				  foreach($objCamp as $compaign){
+					  $arrDataCompaign[] = $compaign->campaign_id;
+				  }
+			  }
+			  $arrData['compaignId'] = implode(',',$arrDataCompaign);
+			 }else{
+				 $objCamp = $this->objCampaignRepositery->getUserCampaigns("");
+				  if(!empty($objCamp[0])){
+					  foreach($objCamp as $compaign){
+						  $arrDataCompaign[] = $compaign->campaign_id;
+					  }
+				  }
+				  $arrData['compaignId'] = implode(',',$arrDataCompaign);
+			 }
+		}else{
+          $arrData['compaignId'] = implode(',',$get['compaign_id']);
+		}
     } else {
       $arrData['compaignId'] = "";
     }
+	//echo "<pre>";var_dump($arrData['compaignId']);exit;
 	$arrData['get'] = $get;
     $arrData['leadCount'] = $this->objLeadRepositery->getAllLeadCount($arrData['userId'], $arrData['compaignId'], $arrData['fromArrayDate'], $arrData['toArrayDate']);
     $arrData['sheetCount'] = $this->objLeadRepositery->getAllSheetCount($arrData['userId'], $arrData['compaignId'], $arrData['fromArrayDate'], $arrData['toArrayDate']);
@@ -199,12 +220,17 @@ class SearchController extends Controller
     public function getUserCampaigns(Request $request){
       if ($request->ajax()) {
         $post = $request->input();
-        $objCamp = $this->objCampaignRepositery->getUserCampaigns($post['user_id']);
-        $varOptions = "<option value=''>All Campaigns</option>";
-        if(!empty($objCamp)){
-          $varinnerOption = "";
-          foreach($objCamp as $arrCamp){
-             $varinnerOption.="<option value='{$arrCamp->campaign_id}'>{$arrCamp->campaign_name}</option>";
+		//echo "<pre>";var_dump($post);exit;
+        $objCamp = $this->objCampaignRepositery->getUserCampaigns(!empty($post['user_id']) ? $post['user_id'] : '');
+        $varOptions = "";
+        if(!empty($objCamp[0])){
+		  $selectedAll="";
+		  $selectedAll = (!empty($post['compaignVal']) && ($post['compaignVal'][0]=='All')) ? 'selected' : '';
+		  //$disabled = !empty($selectedAll) ? 'disabled' : '';
+          $varinnerOption = "<option value='All' {$selectedAll}>All Campaigns</option>";
+		  foreach($objCamp as $arrCamp){
+			 $selected = (!empty($post['compaignVal']) && in_array($arrCamp->campaign_id,$post['compaignVal'])) ? 'selected' : '';
+             $varinnerOption.="<option value='{$arrCamp->campaign_id}' {$selected}>{$arrCamp->campaign_name}</option>";
           }
           $varOptions = $varOptions.$varinnerOption;
         }
